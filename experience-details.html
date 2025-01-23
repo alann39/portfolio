@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Details - Awwalun A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+        }
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+        }
+        .glass-effect {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.75));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            transform: translateX(-50%) translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#0A0A0A] text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm z-40 border-b border-white/5">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">Experience Details</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Portfolio Button -->
+    <a href="index.html" class="back-button group">
+        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="font-medium">Back to Portfolio</span>
+        </div>
+    </a>
+
+    <!-- Experience Details Content -->
+    <div class="container mx-auto px-4 pt-32">
+        <div class="max-w-4xl mx-auto">
+            <div id="experienceDetails" class="glass-effect rounded-2xl p-8 space-y-8">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get('year');
+            const experienceDetails = document.getElementById('experienceDetails');
+
+            // Experience data object
+            const experiences = {
+                '2025': {
+                    title: 'Senior Frontend Developer',
+                    company: 'Tech Innovations Inc',
+                    period: 'January 2025 - Present',
+                    description: 'Leading frontend development initiatives and mentoring junior developers.',
+                    responsibilities: [
+                        'Lead a team of 5 frontend developers',
+                        'Architect and implement scalable frontend solutions',
+                        'Conduct code reviews and maintain coding standards',
+                        'Collaborate with UX/UI designers for optimal user experience'
+                    ],
+                    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+                    achievements: [
+                        'Reduced page load time by 40%',
+                        'Implemented new CI/CD pipeline',
+                        'Led successful migration to Next.js'
+                    ]
+                },
+                '2024': {
+                    title: 'Frontend Developer',
+                    company: 'Digital Solutions Co',
+                    period: 'March 2024 - December 2024',
+                    description: 'Developed and maintained modern web applications using React and related technologies.',
+                    responsibilities: [
+                        'Built responsive and interactive user interfaces',
+                        'Optimized application performance',
+                        'Implemented state management solutions',
+                        'Collaborated with backend team for API integration'
+                    ],
+                    technologies: ['React', 'Redux', 'JavaScript', 'SASS'],
+                    achievements: [
+                        'Delivered 5 major feature releases',
+                        'Improved test coverage to 85%',
+                        'Mentored 2 junior developers'
+                    ]
+                },
+                '2023': {
+                    title: 'Software Developer Intern',
+                    company: 'Tech Company XYZ',
+                    period: 'June 2023 - February 2024',
+                    description: 'Gained hands-on experience in full-stack web development.',
+                    responsibilities: [
+                        'Developed and maintained web applications',
+                        'Collaborated with senior developers',
+                        'Participated in code reviews',
+                        'Assisted in bug fixing and testing'
+                    ],
+                    technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js'],
+                    achievements: [
+                        'Successfully completed 3 client projects',
+                        'Implemented new responsive design system',
+                        'Contributed to team documentation'
+                    ]
+                },
+                '2022': {
+                    title: 'Frontend Developer',
+                    company: 'Creative Agency ABC',
+                    period: 'January 2022 - December 2022',
+                    description: 'Worked on various client projects focusing on frontend development.',
+                    responsibilities: [
+                        'Built responsive user interfaces',
+                        'Implemented modern web technologies',
+                        'Collaborated with design team',
+                        'Maintained existing web applications'
+                    ],
+                    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+                    achievements: [
+                        'Completed 10+ client websites',
+                        'Improved mobile responsiveness',
+                        'Received client satisfaction award'
+                    ]
+                },
+                '2021': {
+                    title: 'Web Development Student',
+                    company: 'Online Bootcamp',
+                    period: 'March 2021 - December 2021',
+                    description: 'Intensive web development training program.',
+                    responsibilities: [
+                        'Learned full-stack development',
+                        'Completed various projects',
+                        'Participated in team projects',
+                        'Studied modern web technologies'
+                    ],
+                    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+                    achievements: [
+                        'Graduated with honors',
+                        'Built 5 full-stack applications',
+                        'Won best project award'
+                    ]
+                }
+            };
+
+            if (year && experiences[year]) {
+                const exp = experiences[year];
+                experienceDetails.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <h1 class="text-3xl font-bold gradient-text">${exp.title}</h1>
+                            <div class="px-4 py-1 rounded-full bg-white/10 text-sm">${year}</div>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-xl text-white/80">${exp.company}</p>
+                            <p class="text-white/60">${exp.period}</p>
+                        </div>
+                        <p class="text-white/80 leading-relaxed">${exp.description}</p>
+                        
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">Key Responsibilities</h2>
+                            <ul class="list-disc pl-5 space-y-2 text-white/70">
+                                ${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">Technologies Used</h2>
+                            <div class="flex flex-wrap gap-2">
+                                ${exp.technologies.map(tech => `
+                                    <span class="px-3 py-1 rounded-full bg-white/10 text-sm">${tech}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">Key Achievements</h2>
+                            <ul class="list-disc pl-5 space-y-2 text-white/70">
+                                ${exp.achievements.map(a => `<li>${a}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else {
+                experienceDetails.innerHTML = `
+                    <div class="text-center py-12">
+                        <h1 class="text-2xl font-bold text-white/60">Experience details not found</h1>
+                        <a href="index.html" class="inline-block mt-4 px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
+                            Return to Portfolio
+                        </a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

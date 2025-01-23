@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+        }
+        .video-container {
+            position: relative;
+            pointer-events: auto;
+        }
+        .video-container iframe {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            transform: translateX(-50%) translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#0A0A0A] text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm z-40 border-b border-white/5">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">Project Details</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Portfolio Button -->
+    <a href="index.html" class="back-button group">
+        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="font-medium">Back to Portfolio</span>
+        </div>
+    </a>
+
+    <!-- Project Details Section -->
+    <section class="pt-32 pb-16 relative">
+        <!-- Noise Background -->
+        <div class="absolute inset-0 noise-bg"></div>
+
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Project Header -->
+                <div class="mb-12">
+                    <h1 id="projectTitle" class="text-4xl md:text-5xl font-bold mb-6">Project Title</h1>
+                    <div class="flex flex-wrap gap-3">
+                        <div id="projectTags" class="flex flex-wrap gap-2">
+                            <!-- Tags will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Image -->
+                <div id="projectImageContainer" class="mb-12 rounded-xl overflow-hidden">
+                    <img id="projectImage" src="" alt="Project Image" class="w-full h-auto">
+                </div>
+
+                <!-- Video Embed Section -->
+                <div id="videoContainer" class="mb-12 rounded-xl overflow-hidden aspect-video hidden video-container">
+                    <iframe id="videoEmbed" 
+                        class="w-full h-full"
+                        src="https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview"
+                        allow="autoplay"
+                        allowfullscreen
+                        frameborder="0"
+                        style="border: 0; pointer-events: auto;">
+                    </iframe>
+                </div>
+
+                <!-- Project Description -->
+                <div class="prose prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+                    <p id="projectDescription" class="text-white/80 mb-8">Project description will be loaded here.</p>
+
+                    <h2 class="text-2xl font-bold mb-4">Features</h2>
+                    <ul id="projectFeatures" class="list-disc pl-6 text-white/80 mb-8">
+                        <!-- Features will be loaded here -->
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-4">Technical Details</h2>
+                    <p id="projectTechnical" class="text-white/80">Technical details will be loaded here.</p>
+                </div>
+
+                <!-- Project Links -->
+                <div class="mt-12 flex gap-4">
+                    <a id="liveDemo" href="#" target="_blank" class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 transition-colors">
+                        View Live Demo
+                    </a>
+                    <a id="sourceCode" href="#" target="_blank" class="inline-flex items-center px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors">
+                        Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('id')
+            };
+        }
+
+        // Load project details based on URL parameter
+        function loadProjectDetails() {
+            const { id } = getUrlParams();
+            
+            // Project data collection
+            const projects = {
+                "1": {
+                    title: "Creative Video Production",
+                    tags: ["Video Editing", "After Effects", "Premier Pro", "Color Grading"],
+                    image: "assets/project1.jpg",
+                    videoUrl: "https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview",
+                    description: "A collection of creative video projects showcasing advanced editing techniques, motion graphics, and storytelling. Each video is carefully crafted to deliver engaging content while maintaining professional quality standards.",
+                    features: [
+                        "Professional color grading and color correction",
+                        "Custom motion graphics and animations",
+                        "Sound design and audio mixing",
+                        "Cinematic transitions and effects",
+                        "4K resolution output"
+                    ],
+                    technical: "Projects were created using industry-standard software including Adobe Premier Pro for primary editing, After Effects for motion graphics and visual effects, and DaVinci Resolve for advanced color grading. All videos are optimized for both web and mobile viewing, with careful attention to file compression and quality preservation.",
+                    demoUrl: "https://youtube.com",
+                    sourceUrl: "https://github.com"
+                },
+                "2": {
+                    title: "Modern Graphic Design Portfolio",
+                    tags: ["Photoshop", "Illustrator", "Brand Design", "UI/UX"],
+                    image: "assets/project2.jpg",
+                    description: "A comprehensive collection of graphic design work including brand identity designs, marketing materials, and digital assets. This portfolio demonstrates versatility in style while maintaining consistent quality across different design mediums.",
+                    features: [
+                        "Brand identity and logo design",
+                        "Marketing material design",
+                        "Social media graphics",
+                        "UI/UX design elements",
+                        "Print-ready layouts"
+                    ],
+                    technical: "All designs are created using Adobe Creative Suite, primarily Photoshop and Illustrator. Projects follow modern design principles with careful attention to typography, color theory, and composition. Files are organized in a systematic way with proper layer management and color profiles for both digital and print media.",
+                    demoUrl: "https://behance.net",
+                    sourceUrl: "https://dribbble.com"
+                },
+                "3": {
+                    title: "Photography Collection",
+                    tags: ["Portrait", "Landscape", "Commercial", "Lightroom"],
+                    image: "assets/project3.jpg",
+                    description: "An extensive photography portfolio showcasing various styles and techniques in both digital and analog photography. The collection includes portraits, landscapes, and commercial photography, each demonstrating unique approaches to composition and lighting.",
+                    features: [
+                        "Professional portrait photography",
+                        "Landscape and nature shots",
+                        "Commercial product photography",
+                        "Event coverage",
+                        "Advanced post-processing techniques"
+                    ],
+                    technical: "Photos are captured using professional-grade DSLR and mirrorless cameras, with a variety of professional lenses for different situations. Post-processing is done in Adobe Lightroom and Photoshop, with careful attention to color accuracy and detail preservation. All images are available in both web-optimized and high-resolution formats.",
+                    demoUrl: "https://500px.com",
+                    sourceUrl: "https://instagram.com"
+                }
+            };
+
+            // Get project data based on ID
+            const projectData = projects[id] || {
+                title: "Project Not Found",
+                tags: [],
+                image: "assets/placeholder.jpg",
+                description: "Project details not available.",
+                features: [],
+                technical: "No technical details available.",
+                demoUrl: "#",
+                sourceUrl: "#"
+            };
+
+            // Update the DOM with project details
+            document.getElementById('projectTitle').textContent = projectData.title;
+            
+            // Handle video/image display
+            const imageContainer = document.getElementById('projectImageContainer');
+            const videoContainer = document.getElementById('videoContainer');
+            const videoEmbed = document.getElementById('videoEmbed');
+            
+            if (projectData.videoUrl) {
+                imageContainer.classList.add('hidden');
+                videoContainer.classList.remove('hidden');
+                videoEmbed.src = projectData.videoUrl;
+            } else {
+                imageContainer.classList.remove('hidden');
+                videoContainer.classList.add('hidden');
+                document.getElementById('projectImage').src = projectData.image;
+            }
+            
+            document.getElementById('projectDescription').textContent = projectData.description;
+            document.getElementById('projectTechnical').textContent = projectData.technical;
+            document.getElementById('liveDemo').href = projectData.demoUrl;
+            document.getElementById('sourceCode').href = projectData.sourceUrl;
+
+            // Update tags
+            const tagsContainer = document.getElementById('projectTags');
+            tagsContainer.innerHTML = projectData.tags.map(tag => 
+                `<span class="px-4 py-2 rounded-full text-sm font-medium bg-white/5 hover:bg-white/10 text-white/80 transition-colors">${tag}</span>`
+            ).join('');
+
+            // Update features
+            const featuresContainer = document.getElementById('projectFeatures');
+            featuresContainer.innerHTML = projectData.features.map(feature => 
+                `<li>${feature}</li>`
+            ).join('');
+        }
+
+        // Load project details when page loads
+        window.addEventListener('load', loadProjectDetails);
+    </script>
+</body>
+</html>
