@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awwalun A - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/animations.css">
     <script src="scripts/particles.js"></script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'General Sans', sans-serif;
             background: #0A0A0A;
         }
         .noise-bg {
@@ -30,6 +31,27 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+
+        /* Modern Scrollbar Styles */
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            border: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.3);
         }
         /* Timeline Styles */
         .timeline-container {
@@ -95,9 +117,17 @@
                             </svg>
                             <span>About</span>
                         </a>
-                        <a href="#projects" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+                        <a href="#experience" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18m-7 5h7" />
+                            </svg>
+                            <span>Experience</span>
+                        </a>
+                        <a href="#projects" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
                             </svg>
                             <span>Projects</span>
                         </a>
@@ -127,9 +157,17 @@
                         </svg>
                         <span>About</span>
                     </a>
-                    <a href="#projects" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5">
+                    <a href="#experience" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18m-7 5h7" />
+                        </svg>
+                        <span>Experience</span>
+                    </a>
+                    <a href="#projects" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
                         </svg>
                         <span>Projects</span>
                     </a>
@@ -157,7 +195,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="space-y-8 text-center">
                     <h1 class="text-4xl md:text-7xl font-bold tracking-tight">
-                        <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Hi, I'm Awwalun A</span>
+                        <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Hi, I'm Awwalun!</span>
                     </h1>
                     <p class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
                         A Computerized Accounting student with a passion for creative development. 
@@ -165,12 +203,12 @@
                     </p>
                     <div class="flex items-center justify-center gap-4 pt-4">
                         <a href="#projects" 
-                           class="group relative px-8 py-3 bg-white text-black rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]">
+                           class="group relative px-4 sm:px-8 py-2 sm:py-3 text-sm font-medium sm:text-base bg-white text-black rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]">
                             <span class="relative z-10">View Projects</span>
                             <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity"></div>
                         </a>
                         <a href="#contact" 
-                           class="group px-8 py-3 border border-white/10 rounded-lg transition-all duration-300 hover:border-white/20 hover:scale-[1.02]">
+                           class="group px-4 sm:px-8 py-2 sm:py-3 text-sm font-medium sm:text-base border border-white/10 rounded-lg transition-all duration-300 hover:border-white/20 hover:scale-[1.02]">
                             <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Contact Me</span>
                         </a>
                     </div>
@@ -179,14 +217,14 @@
         </div>
 
         <!-- Tech Stack -->
-        <div class="absolute bottom-20 left-1/2 -translate-x-1/2 z-20">
-            <div class="flex items-center gap-8 text-white/30 text-sm">
+        <div class="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 w-full sm:w-auto px-4 sm:px-0">
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-white/30 text-sm">
                 <span>Tech Enthusiast</span>
-                <div class="h-px w-12 bg-white/10"></div>
-                <div class="flex items-center gap-6">
-                    <i class="fab fa-js text-xl hover:text-white/50 transition-colors"></i>
-                    <i class="fab fa-react text-xl hover:text-white/50 transition-colors"></i>
-                    <i class="fab fa-node text-xl hover:text-white/50 transition-colors"></i>
+                <div class="h-px w-12 bg-white/10 hidden sm:block"></div>
+                <div class="flex flex-wrap justify-center sm:flex-nowrap items-center gap-6">
+                    <i class="fab fa-css3-alt text-xl hover:text-white/50 transition-colors"></i>
+                    <i class="fab fa-html5 text-xl hover:text-white/50 transition-colors"></i>
+                    <i class="fab fa-figma text-xl hover:text-white/50 transition-colors"></i>
                     <i class="fab fa-python text-xl hover:text-white/50 transition-colors"></i>
                     <i class="fas fa-database text-xl hover:text-white/50 transition-colors"></i>
                 </div>
@@ -207,7 +245,7 @@
 
         <div class="container mx-auto px-4 z-10 relative">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-center mb-16">
                     <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">About Me</span>
                 </h2>
 
@@ -223,11 +261,11 @@
                                 <!-- Quick Stats -->
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="text-center p-4 rounded-lg bg-white/5 border border-white/10">
-                                        <div class="text-2xl font-bold text-white mb-1">2+</div>
+                                        <div class="text-3xl font-semibold text-white mb-1">2+</div>
                                         <div class="text-sm text-white/60">Years Experience</div>
                                     </div>
                                     <div class="text-center p-4 rounded-lg bg-white/5 border border-white/10">
-                                        <div class="text-2xl font-bold text-white mb-1">10+</div>
+                                        <div class="text-3xl font-semibold text-white mb-1">10+</div>
                                         <div class="text-sm text-white/60">Projects</div>
                                     </div>
                                 </div>
@@ -236,17 +274,16 @@
 
                         <!-- Bio Content -->
                         <div class="space-y-8">
-                            <h3 class="text-2xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
-                                Computerized Accounting Student & Creative Developer
+                            <h3 class="text-2xl font-semibold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+                                Bachelor of Computerized Accounting Student & Tech Enthusiast
                             </h3>
-                            <p class="text-white/60 text-lg leading-relaxed">
-                                I'm an undergraduate student in Computerized Accounting with a passion for creative development. 
-                                My journey combines financial precision with innovative technology solutions.
+                            <p class="text-white/60 text-md leading-relaxed">
+                                A dedicated and adaptable individual with a strong passion for Accounting, finance, and technology. Currently pursuing a Bachelor's degree in Computerized Accounting at Politeknik Negeri Semarang. Experienced in financial managing, web developing, digital marketing, and organizational leadership. Skilled in problem-solving, teamwork, and creative thinking with a high work ethic.
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="px-6 py-3 rounded-lg bg-white/5 border border-white/10 flex items-center gap-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2z" />
                                     </svg>
                                     <span class="text-white/80">Accounting</span>
                                 </div>
@@ -263,6 +300,13 @@
                                     <span class="text-white/80">Design</span>
                                 </div>
                             </div>
+                            <!-- Download CV Button -->
+                            <a href="assets/cv.pdf" download class="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-white font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Download CV
+                            </a>
                         </div>
                     </div>
 
@@ -270,7 +314,7 @@
                     <div class="grid md:grid-cols-2 gap-12">
                         <!-- Skills -->
                         <div class="space-y-8">
-                            <h3 class="text-2xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent flex items-center gap-3">
+                            <h3 class="text-2xl font-semibold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent flex items-center gap-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                 </svg>
@@ -283,8 +327,8 @@
                                         <span class="text-white font-medium">Financial Analysis</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-white/60 text-sm">Data analysis & financial reporting</p>
-                                        <span class="text-sm text-white/60">Advanced</span>
+                                        <p class="text-white/60 text-sm">Financial reporting & Data analysis</p>
+                                        <span class="text-sm font-medium text-white/60">Advanced</span>
                                     </div>
                                 </div>
                                 <div class="skill-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
@@ -294,17 +338,27 @@
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <p class="text-white/60 text-sm">Frontend & UI development</p>
-                                        <span class="text-sm text-white/60">Expert</span>
+                                        <span class="text-sm font-medium text-white/60">Intermediate</span>
                                     </div>
                                 </div>
                                 <div class="skill-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
                                     <div class="flex items-center gap-3 mb-3">
-                                        <i class="fas fa-paint-brush text-2xl text-blue-400"></i>
-                                        <span class="text-white font-medium">UI/UX Design</span>
+                                        <i class="fas fa-palette text-2xl text-blue-400"></i>
+                                        <span class="text-white font-medium">Graphic Design</span>
                                     </div>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-white/60 text-sm">User interface & experience design</p>
-                                        <span class="text-sm text-white/60">Intermediate</span>
+                                        <p class="text-white/60 text-sm">Visual & graphic content creation</p>
+                                        <span class="text-sm font-medium text-white/60">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <i class="fas fa-film text-2xl text-green-400"></i>
+                                        <span class="text-white font-medium">Video Editing</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <p class="text-white/60 text-sm">Video production & post-processing</p>
+                                        <span class="text-sm font-semibold text-white/60">Intermediate</span>
                                     </div>
                                 </div>
                             </div>
@@ -312,40 +366,59 @@
 
                         <!-- Tools -->
                         <div class="space-y-8">
-                            <h3 class="text-2xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent flex items-center gap-3">
+                            <h3 class="text-2xl font-semibold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent flex items-center gap-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 11-8 0 4 4 0 018 0zM12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                 </svg>
                                 Tools & Technologies
                             </h3>
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                 <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center gap-3">
                                         <i class="fab fa-html5 text-2xl text-orange-400"></i>
-                                        <span class="text-white font-medium">HTML5/CSS3</span>
+                                        <span class="text-white font-medium">HTML/CSS</span>
                                     </div>
-                                    <p class="text-white/60 text-sm">Modern web development</p>
+                                    <p class="text-white/60 text-sm mt-3">Modern web development</p>
                                 </div>
+
                                 <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <i class="fab fa-js text-2xl text-yellow-400"></i>
-                                        <span class="text-white font-medium">JavaScript</span>
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-file-excel text-2xl text-green-400"></i>
+                                        <span class="text-white font-medium">Excel</span>
                                     </div>
-                                    <p class="text-white/60 text-sm">Frontend development</p>
+                                    <p class="text-white/60 text-sm mt-3">Data analysis & reporting</p>
                                 </div>
+
                                 <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center gap-3">
                                         <i class="fab fa-figma text-2xl text-purple-400"></i>
                                         <span class="text-white font-medium">Figma</span>
                                     </div>
-                                    <p class="text-white/60 text-sm">UI/UX design</p>
+                                    <p class="text-white/60 text-sm mt-3">UI/UX design</p>
                                 </div>
+
                                 <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center gap-3">
                                         <i class="fas fa-database text-2xl text-blue-400"></i>
                                         <span class="text-white font-medium">SQL</span>
                                     </div>
-                                    <p class="text-white/60 text-sm">Database management</p>
+                                    <p class="text-white/60 text-sm mt-3">Database management</p>
+                                </div>
+
+                                <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-pen-nib text-2xl text-pink-400"></i>
+                                        <span class="text-white font-medium">Canva</span>
+                                    </div>
+                                    <p class="text-white/60 text-sm mt-3">Graphic design & templates</p>
+                                </div>
+
+                                <div class="tool-card p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-film text-2xl text-purple-500"></i>
+                                        <span class="text-white font-medium">Adobe Premiere</span>
+                                    </div>
+                                    <p class="text-white/60 text-sm mt-3">Video editing & production</p>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +438,7 @@
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-3xl md:text-6xl font-semibold text-center mb-16">
                     <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Experience Timeline</span>
                 </h2>
 
@@ -379,104 +452,267 @@
                     </button>
                     <button id="scrollRight" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </button>
 
                     <!-- Timeline Scroll Container -->
                     <div class="timeline-container">
                         <div class="timeline-wrapper">
-                            <!-- 2025 Experience -->
-                            <div class="timeline-item glass-effect rounded-xl p-6">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <span class="text-2xl font-bold text-emerald-400">2025</span>
-                                    <div class="h-px w-12 bg-white/10"></div>
+
+                            <!-- 2024 Experience - PWS -->
+                            <div class="timeline-item glass-effect rounded-xl p-8 pb-20 relative">
+                                <div class="flex justify-center mb-8">
+                                    <div class="relative inline-flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-400/5 blur-xl rounded-full"></div>
+                                        <div class="relative">
+                                            <span class="text-blue-400 font-semibold text-5xl transform translate-z-10" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);">2024</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="experience-card">
-                                        <h3 class="text-lg font-semibold">Senior Frontend Developer</h3>
-                                        <p class="text-white/60">Tech Innovations Inc</p>
-                                        <ul class="mt-2 space-y-2 text-sm text-white/70">
-                                            <li>• Lead frontend development team</li>
-                                            <li>• Architect scalable solutions</li>
-                                        </ul>
-                                        <a href="experience-details.html?year=2025" class="see-details-btn">See Details</a>
+                                <div class="space-y-8">
+                                    <div class="space-y-2">
+                                        <h3 class="text-xl font-medium text-white">PT Putra Wijayakusuma Sakti</h3>
+                                        <div class="flex items-center gap-2 text-white/60 text-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span>Finance, Tax, and Risk Management Intern</span>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Managed financial tasks and risk assessment</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Led HUT RI event committee of 50+ people</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Managed 5 events in PWS series</span>
+                                        </li>
+                                    </ul>
+                                    <div class="absolute bottom-8 left-8">
+                                        <a href="experience-details.html?company=pws" class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm">
+                                            See Details
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 2024 Experience -->
-                            <div class="timeline-item glass-effect rounded-xl p-6">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <span class="text-2xl font-bold text-indigo-400">2024</span>
-                                    <div class="h-px w-12 bg-white/10"></div>
+                            <!-- 2024 Experience - PCC -->
+                            <div class="timeline-item glass-effect rounded-xl p-8 pb-20 relative">
+                                <div class="flex justify-center mb-8">
+                                    <div class="relative inline-flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-400/5 blur-xl rounded-full"></div>
+                                        <div class="relative">
+                                            <span class="text-blue-400 font-semibold text-5xl transform translate-z-10" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);">2024</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="experience-card">
-                                        <h3 class="text-lg font-semibold">Frontend Developer</h3>
-                                        <p class="text-white/60">Digital Solutions Co</p>
-                                        <ul class="mt-2 space-y-2 text-sm text-white/70">
-                                            <li>• Built interactive web applications</li>
-                                            <li>• Optimized performance</li>
-                                        </ul>
-                                        <a href="experience-details.html?year=2024" class="see-details-btn">See Details</a>
+                                <div class="space-y-8">
+                                    <div class="space-y-2">
+                                        <h3 class="text-xl font-medium text-white">Polytechnic Computer Club</h3>
+                                        <div class="flex items-center gap-2 text-white/60 text-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                            </svg>
+                                            <span>Research & Development Division</span>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Supervised and developed organizational functions</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Led UKM PCC handover ceremony 2024</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-blue-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Collaborated with team members on various IT projects</span>
+                                        </li>
+                                    </ul>
+                                    <div class="absolute bottom-8 left-8">
+                                        <a href="experience-details.html?org=pcc2024" class="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm">
+                                            See Details
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 2023 Experience -->
-                            <div class="timeline-item glass-effect rounded-xl p-6">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <span class="text-2xl font-bold text-purple-400">2023</span>
-                                    <div class="h-px w-12 bg-white/10"></div>
+                            <!-- 2023-2024 Organization -->
+                            <div class="timeline-item glass-effect rounded-xl p-8 pb-20 relative">
+                                <div class="flex justify-center mb-8">
+                                    <div class="relative inline-flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-purple-400/5 blur-xl rounded-full"></div>
+                                        <div class="relative">
+                                            <span class="text-purple-400 font-semibold text-5xl transform translate-z-10" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);">2023/24</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="experience-card">
-                                        <h3 class="text-lg font-semibold">Software Developer Intern</h3>
-                                        <p class="text-white/60">Tech Company XYZ</p>
-                                        <ul class="mt-2 space-y-2 text-sm text-white/70">
-                                            <li>• Developed web applications</li>
-                                            <li>• Collaborated with senior developers</li>
-                                        </ul>
-                                        <a href="experience-details.html?year=2023" class="see-details-btn">See Details</a>
+                                <div class="space-y-8">
+                                    <div class="space-y-2">
+                                        <h3 class="text-xl font-medium text-white">Djarum Beasiswa Plus 39</h3>
+                                        <div class="flex items-center gap-2 text-white/60 text-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            <span>Media Creative Staff</span>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-purple-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Managed branding and social media</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-purple-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Created creative and informative content</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-purple-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Documented organizational activities</span>
+                                        </li>
+                                    </ul>
+                                    <div class="absolute bottom-8 left-8">
+                                        <a href="experience-details.html?org=djarum" class="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition-colors text-sm">
+                                            See Details
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 2022 Experience -->
-                            <div class="timeline-item glass-effect rounded-xl p-6">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <span class="text-2xl font-bold text-blue-400">2022</span>
-                                    <div class="h-px w-12 bg-white/10"></div>
+                            <!-- 2023 Experience - General Software -->
+                            <div class="timeline-item glass-effect rounded-xl p-8 pb-20 relative">
+                                <div class="flex justify-center mb-8">
+                                    <div class="relative inline-flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-emerald-400/5 blur-xl rounded-full"></div>
+                                        <div class="relative">
+                                            <span class="text-emerald-400 font-semibold text-5xl transform translate-z-10" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);">2023</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="experience-card">
-                                        <h3 class="text-lg font-semibold">Frontend Developer</h3>
-                                        <p class="text-white/60">Creative Agency ABC</p>
-                                        <ul class="mt-2 space-y-2 text-sm text-white/70">
-                                            <li>• Built responsive user interfaces</li>
-                                            <li>• Implemented modern web technologies</li>
-                                        </ul>
-                                        <a href="experience-details.html?year=2022" class="see-details-btn">See Details</a>
+                                <div class="space-y-8">
+                                    <div class="space-y-2">
+                                        <h3 class="text-xl font-medium text-white">PT General Software Indonesia</h3>
+                                        <div class="flex items-center gap-2 text-white/60 text-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7h18M3 12h18m-7 5h7" />
+                                            </svg>
+                                            <span>Digital Marketing Staff Intern</span>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Managed e-commerce and product design</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Collaborated with team members on marketing strategies</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Created and maintained digital marketing materials</span>
+                                        </li>
+                                    </ul>
+                                    <div class="absolute bottom-8 left-8">
+                                        <a href="experience-details.html?company=general-software" class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
+                                            See Details
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 2021 Experience -->
-                            <div class="timeline-item glass-effect rounded-xl p-6">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <span class="text-2xl font-bold text-pink-400">2021</span>
-                                    <div class="h-px w-12 bg-white/10"></div>
+                            <!-- 2023 Experience - PCC -->
+                            <div class="timeline-item glass-effect rounded-xl p-8 pb-20 relative">
+                                <div class="flex justify-center mb-8">
+                                    <div class="relative inline-flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-emerald-400/5 blur-xl rounded-full"></div>
+                                        <div class="relative">
+                                            <span class="text-emerald-400 font-semibold text-5xl transform translate-z-10" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);">2023</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="experience-card">
-                                        <h3 class="text-lg font-semibold">Web Development Student</h3>
-                                        <p class="text-white/60">Online Bootcamp</p>
-                                        <ul class="mt-2 space-y-2 text-sm text-white/70">
-                                            <li>• Learned full-stack development</li>
-                                            <li>• Completed various projects</li>
-                                        </ul>
-                                        <a href="experience-details.html?year=2021" class="see-details-btn">See Details</a>
+                                <div class="space-y-8">
+                                    <div class="space-y-2">
+                                        <h3 class="text-xl font-medium text-white">Polytechnic Computer Club</h3>
+                                        <div class="flex items-center gap-2 text-white/60 text-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            <span>Redaksi Division Head</span>
+                                        </div>
+                                    </div>
+                                    <ul class="space-y-3 text-sm">
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Managed social media and branding activities</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Increased organizational reach by 20%</span>
+                                        </li>
+                                        <li class="flex items-start gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0 text-emerald-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white/60">Created creative and informative content</span>
+                                        </li>
+                                    </ul>
+                                    <div class="absolute bottom-8 left-8">
+                                        <a href="experience-details.html?org=pcc2023" class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
+                                            See Details
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -497,32 +733,40 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-semibold text-center mb-8">
                     <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Featured Projects</span>
                 </h2>
+                <!-- Add See All Button -->
+                <div class="flex justify-end mb-8">
+                    <button id="seeAllProjectsBtn" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all flex items-center gap-2">
+                        <span>See All</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project Card 1 -->
                     <div class="project-card rounded-2xl backdrop-blur-sm overflow-hidden bg-white/5">
                         <div class="project-content h-full">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="assets/project1.png" alt="Project 1" class="w-full h-full object-cover">
+                                <img src="assets/projects/ascomfest2024/cover.jpg" alt="Ascomfest 2024 After Movie" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <div class="bg-black/20 backdrop-blur-md rounded-xl p-6">
-                                    <h3 class="text-xl font-semibold text-white mb-2">Video Project</h3>
-                                    <p class="text-white/60 text-sm mb-4">Description of your video project showcasing your editing skills.</p>
-                                    <div class="flex gap-2 mb-4">
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">HTML</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">CSS</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">JavaScript</span>
-                                    </div>
-                                    <a href="project-details.html?id=1" class="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-medium hover:bg-white/20 transition-colors">
-                                        View Details
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </a>
+                                <h3 class="text-xl font-semibold mb-2">Ascomfest 2024</h3>
+                                <p class="text-white/60 mb-4">After Movie Project showcasing event highlights through cinematic storytelling.</p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Capcut</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Adobe Premiere</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Canva</span>
                                 </div>
+                                <a href="project-details.html?project=project1" class="inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors">
+                                    <span>View Project</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -531,24 +775,23 @@
                     <div class="project-card rounded-2xl backdrop-blur-sm overflow-hidden bg-white/5">
                         <div class="project-content h-full">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="assets/project2.png" alt="Project 2" class="w-full h-full object-cover">
+                                <img src="assets/projects/pws-calendar/cover.png" alt="PWS Calendar 2025 Design" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <div class="bg-black/20 backdrop-blur-md rounded-xl p-6">
-                                    <h3 class="text-xl font-semibold text-white mb-2">Graphic Design</h3>
-                                    <p class="text-white/60 text-sm mb-4">Showcase of your graphic design portfolio and creative work.</p>
-                                    <div class="flex gap-2 mb-4">
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">HTML</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">CSS</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">JavaScript</span>
-                                    </div>
-                                    <a href="project-details.html?id=2" class="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-medium hover:bg-white/20 transition-colors">
-                                        View Details
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </a>
+                                <h3 class="text-xl font-semibold mb-2">PWS Calendar 2025</h3>
+                                <p class="text-white/60 mb-4">Corporate calendar and notebook design project for PT PWS.</p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Adobe PS</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Canva</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Photography</span>
                                 </div>
+                                <a href="project-details.html?project=project2" class="inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors">
+                                    <span>View Project</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -557,24 +800,23 @@
                     <div class="project-card rounded-2xl backdrop-blur-sm overflow-hidden bg-white/5">
                         <div class="project-content h-full">
                             <div class="relative aspect-video overflow-hidden">
-                                <img src="assets/project3.jpg" alt="Project 3" class="w-full h-full object-cover">
+                                <img src="assets/projects/gambreng/cover.jpg" alt="Gambreng by Gamabaswara" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <div class="bg-black/20 backdrop-blur-md rounded-xl p-6">
-                                    <h3 class="text-xl font-semibold text-white mb-2">Photography</h3>
-                                    <p class="text-white/60 text-sm mb-4">Collection of your best photography work and compositions.</p>
-                                    <div class="flex gap-2 mb-4">
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">HTML</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">CSS</span>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80">JavaScript</span>
-                                    </div>
-                                    <a href="project-details.html?id=3" class="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 text-white text-sm font-medium hover:bg-white/20 transition-colors">
-                                        View Details
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </a>
+                                <h3 class="text-xl font-semibold mb-2">Gambreng by Gamabaswara</h3>
+                                <p class="text-white/60 mb-4">Creative Music video by Beswan Semarang for Indonesia</p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Capcut</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Instagram</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white/10">Video Editing</span>
                                 </div>
+                                <a href="project-details.html?project=project3" class="inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors">
+                                    <span>View Project</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -582,6 +824,168 @@
             </div>
         </div>
     </section>
+
+    <!-- All Projects Modal -->
+    <div id="allProjectsModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="glass-effect rounded-2xl w-full max-w-4xl max-h-[80vh] overflow-hidden">
+                <!-- Modal Header -->
+                <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                    <h3 class="text-2xl font-semibold gradient-text">All Projects</h3>
+                    <button id="closeAllProjectsModal" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal Content -->
+                <div class="p-6 overflow-y-auto max-h-[calc(80vh-80px)] custom-scrollbar">
+                    <div class="grid gap-6">
+                        <!-- Project Item -->
+                        <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="assets/projects/kaleidoscope/cover.png" alt="Project 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Documentary Video of Gama Baswara</h4>
+                                    <p class="text-white/70 text-sm mb-3">A documentary video about the journey and achievements of Djarum Beasiswa Plus scholarship awardee</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Capcut</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Canva</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Video Editing</span>
+                                    </div>
+                                    <a href="project-details.html?project=project4" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Item 2 -->
+                        <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="assets/projects/pcc/cover.png" alt="Project 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Company Profile Video of UKM PCC</h4>
+                                    <p class="text-white/70 text-sm mb-3">A comprehensive company profile for UKM PCC (Polytechnic Computer Club)</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">Adobe Premiere</span>
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">Canva</span>
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">Video Editing</span>
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">Directing</span>
+                                    </div>
+                                    <a href="project-details.html?project=project5" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Item 3 -->
+                        <!-- <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop" alt="Project 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Portfolio Website</h4>
+                                    <p class="text-white/70 text-sm mb-3">A modern portfolio website with dynamic content loading</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">HTML</span>
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">TailwindCSS</span>
+                                        <span class="px-3 py-1 text-xs rounded-full bg-white/10">JavaScript</span>
+                                    </div>
+                                    <a href="project-details.html?project=project3" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- Project Item 4 -->
+                        <!-- <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop" alt="Project 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Smart Home Dashboard</h4>
+                                    <p class="text-white/70 text-sm mb-3">IoT dashboard for monitoring and controlling smart home devices</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Vue.js</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Firebase</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">IoT</span>
+                                    </div>
+                                    <a href="project-details.html?project=project4" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- Project Item 5 -->
+                        <!-- <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&auto=format&fit=crop" alt="Project 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Mobile Fitness App</h4>
+                                    <p class="text-white/70 text-sm mb-3">A comprehensive fitness tracking app with workout plans and nutrition guides</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">React Native</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Redux</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Firebase</span>
+                                    </div>
+                                    <a href="project-details.html?project=project5" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- Project Item 6 -->
+                        <!-- <div class="glass-effect rounded-xl p-4 hover:bg-white/5 transition-colors">
+                            <div class="flex items-start gap-4">
+                                <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop" alt="Project 6" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold mb-2">Blockchain Explorer</h4>
+                                    <p class="text-white/70 text-sm mb-3">A web application for exploring and analyzing blockchain transactions</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Web3.js</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Ethereum</span>
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-xs">Next.js</span>
+                                    </div>
+                                    <a href="project-details.html?project=project6" class="inline-flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-purple-500/20 rounded-lg transition-all text-sm">
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="py-32 relative overflow-hidden">
@@ -593,7 +997,7 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-xl mx-auto text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">
+                <h2 class="text-3xl md:text-5xl font-semibold text-center mb-8">
                     <span class="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">Get In Touch</span>
                 </h2>
                 <p class="text-white/60 mb-8 text-lg">Have a question or want to work together? Feel free to reach out!</p>
@@ -614,7 +1018,7 @@
             <div class="glass-effect rounded-2xl p-8">
                 <!-- Modal Header -->
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold gradient-text">Send a Message</h3>
+                    <h3 class="text-2xl font-semibold gradient-text">Send a Message</h3>
                     <button id="closeContactModal" class="p-2 hover:bg-white/10 rounded-xl transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/60 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -623,22 +1027,20 @@
                 </div>
 
                 <!-- Contact Form -->
-                <form id="contactForm" class="space-y-6">
+                <form id="contactForm" class="space-y-6" target="hidden_iframe" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeFZVrO2fh-YoIPQCiKC0xNJpWKX8XsxXirHwYY0F0FlGGrdA/formResponse" method="POST">
                     <div>
                         <label for="name" class="block text-sm font-medium text-white/80 mb-2">Your Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors" placeholder="John Doe">
+                        <input type="text" id="name" name="entry.300770693" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors" placeholder="Alann Project">
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email Address</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors" placeholder="john@example.com">
+                        <input type="email" id="email" name="entry.895982826" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors" placeholder="alannproject@gmail.com">
                     </div>
                     <div>
                         <label for="message" class="block text-sm font-medium text-white/80 mb-2">Message</label>
-                        <textarea id="message" name="message" required rows="4" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors resize-none" placeholder="Your message here..."></textarea>
+                        <textarea id="message" name="entry.1149443331" required rows="4" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white/20 text-white placeholder-white/30 outline-none transition-colors resize-none" placeholder="Your message here..."></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:opacity-90 transition-opacity">
-                        Send Message
-                    </button>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all font-medium">Send Message</button>
                     <!-- Success Message -->
                     <div id="successMessage" class="hidden">
                         <p class="text-green-400 text-center">Message sent successfully!</p>
@@ -653,24 +1055,26 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-white/5">
+    <footer class="py-8 border-t border-white/5 mb-4">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-white/40"> 2025 Awwalun A. All rights reserved.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-white/40 hover:text-white/60 transition-colors">
+                    <a href="https://github.com/alann39/portfolio.git" target="_blank" class="text-white/40 hover:text-white/60 transition-colors">
                         <i class="fab fa-github text-xl"></i>
                     </a>
-                    <a href="#" class="text-white/40 hover:text-white/60 transition-colors">
+                    <a href="https://www.linkedin.com/in/awwalun" target="_blank" class="text-white/40 hover:text-white/60 transition-colors">
                         <i class="fab fa-linkedin text-xl"></i>
                     </a>
-                    <a href="#" class="text-white/40 hover:text-white/60 transition-colors">
+                    <a href="https://instagram.com/aawwalun_ " target="_blank" class="text-white/40 hover:text-white/60 transition-colors">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -688,9 +1092,6 @@
             const modal = document.getElementById('contactModal');
             const openModalBtn = document.getElementById('openContactModal');
             const closeModalBtn = document.getElementById('closeContactModal');
-            const contactForm = document.getElementById('contactForm');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
 
             if (modal && openModalBtn && closeModalBtn) {
                 // Open modal
@@ -698,10 +1099,6 @@
                     modal.classList.remove('hidden');
                     modal.classList.add('flex');
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    // Reset form and messages
-                    contactForm.reset();
-                    successMessage.classList.add('hidden');
-                    errorMessage.classList.add('hidden');
                 });
 
                 // Close modal
@@ -720,54 +1117,46 @@
                     }
                 });
 
-                // Close modal on escape key
+                // Close modal with Escape key
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
                         closeModal();
                     }
                 });
+            }
 
-                // Handle form submission
-                if (contactForm) {
-                    contactForm.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        
-                        const formData = {
-                            name: document.getElementById('name').value,
-                            email: document.getElementById('email').value,
-                            message: document.getElementById('message').value,
-                            timestamp: new Date().toISOString()
-                        };
+            // All Projects Modal Functionality
+            const allProjectsModal = document.getElementById('allProjectsModal');
+            const seeAllProjectsBtn = document.getElementById('seeAllProjectsBtn');
+            const closeAllProjectsModal = document.getElementById('closeAllProjectsModal');
 
-                        try {
-                            const response = await fetch('http://localhost:8000/api/messages', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(formData)
-                            });
+            if (allProjectsModal && seeAllProjectsBtn && closeAllProjectsModal) {
+                const openAllProjectsModal = () => {
+                    allProjectsModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
 
-                            if (response.ok) {
-                                // Show success message
-                                successMessage.classList.remove('hidden');
-                                errorMessage.classList.add('hidden');
-                                
-                                // Reset form
-                                contactForm.reset();
-                                
-                                // Close modal after 2 seconds
-                                setTimeout(closeModal, 2000);
-                            } else {
-                                throw new Error('Failed to send message');
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                            successMessage.classList.add('hidden');
-                            errorMessage.classList.remove('hidden');
-                        }
-                    });
-                }
+                const closeAllProjectsModalFunc = () => {
+                    allProjectsModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+
+                seeAllProjectsBtn.addEventListener('click', openAllProjectsModal);
+                closeAllProjectsModal.addEventListener('click', closeAllProjectsModalFunc);
+
+                // Close modal when clicking outside
+                allProjectsModal.addEventListener('click', (e) => {
+                    if (e.target === allProjectsModal) {
+                        closeAllProjectsModalFunc();
+                    }
+                });
+
+                // Close modal with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !allProjectsModal.classList.contains('hidden')) {
+                        closeAllProjectsModalFunc();
+                    }
+                });
             }
 
             // Timeline scroll functionality
@@ -816,6 +1205,50 @@
                 // Initial button state
                 updateScrollButtons();
             }
+
+            // Auto-close hamburger menu after clicking a menu item
+            const menuItems = document.querySelectorAll('#mobileMenu a');
+            const hamburgerMenu = document.getElementById('mobileMenu');
+
+            if (menuItems && hamburgerMenu) {
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        hamburgerMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Get form element
+            const form = document.getElementById('contactForm');
+            
+            // Add submit event listener to form
+            form.addEventListener('submit', function(e) {
+                // Hide any existing messages
+                document.getElementById('successMessage').classList.add('hidden');
+                document.getElementById('errorMessage').classList.add('hidden');
+                
+                // Show success message after a small delay
+                setTimeout(() => {
+                    // Show success message
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    
+                    // Reset form immediately
+                    form.reset();
+                    
+                    // Hide success message and close modal after delay
+                    setTimeout(() => {
+                        // Hide success message first
+                        document.getElementById('successMessage').classList.add('hidden');
+                        
+                        // Then close modal
+                        setTimeout(() => {
+                            document.getElementById('contactModal').classList.remove('flex');
+                            document.getElementById('contactModal').classList.add('hidden');
+                            document.body.style.overflow = '';
+                        }, 500); // Small delay between hiding message and closing modal
+                    }, 1500); // Show success message for 1.5 seconds
+                }, 500);
+            });
         });
     </script>
 </body>
