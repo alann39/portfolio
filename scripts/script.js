@@ -1,16 +1,27 @@
 // Mobile menu functionality
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuLinks = mobileMenu.querySelectorAll('.flex-col > a');
 
 menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('expanded');
+    if (!mobileMenu.classList.contains('expanded')) {
+        // Wait for animation to finish before hiding
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 500);
+    } else {
+        mobileMenu.classList.remove('hidden');
+    }
     document.body.classList.toggle('overflow-hidden');
 });
 
 mobileMenuLinks.forEach(link => {
     link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('expanded');
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 500);
         document.body.classList.remove('overflow-hidden');
     });
 });
