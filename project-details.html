@@ -5,50 +5,280 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
     <style>
+        /* Base Styles */
         .noise-bg {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             opacity: 0.02;
         }
-        .video-container {
-            position: relative;
-            pointer-events: auto;
+
+        /* Project Gallery Grid */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-        .video-container iframe {
+
+        /* Gallery Item Styles */
+        .gallery-item {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            z-index: 10;
-            pointer-events: auto;
+            cursor: pointer;
         }
-        .back-button {
-            position: fixed;
-            bottom: 2rem;
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Loading State */
+        .gallery-item.loading::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .gallery-item.loading::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-top-color: white;
+            border-radius: 50%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            z-index: 50;
-            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            animation: spin 1s linear infinite;
+            z-index: 2;
         }
-        .back-button:hover {
-            transform: translateX(-50%) translateY(-2px);
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Fancybox Customization */
+        .fancybox__container {
+            --fancybox-bg: rgba(17, 17, 17, 0.98);
+            --fancybox-color: #fff;
+        }
+
+        .fancybox__content {
+            padding: 0;
+            background: transparent;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+        }
+
+        .fancybox__image {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+
+        .fancybox__toolbar {
+            background: transparent;
+            --carousel-button-bg: rgba(255, 255, 255, 0.05);
+            --carousel-button-svg-width: 20px;
+            --carousel-button-svg-height: 20px;
+            padding: 1rem;
+        }
+
+        .fancybox__toolbar__items {
+            gap: 12px;
+        }
+
+        .fancybox__toolbar__items button {
+            color: #fff;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fancybox__toolbar__items button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .fancybox__toolbar__items button svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2px;
+        }
+
+        .fancybox__slide {
+            padding: 2rem;
+            color: var(--fancybox-color);
+        }
+
+        .fancybox__caption {
+            text-align: center;
+            max-width: 80%;
+            margin: 1rem auto;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+        }
+
+        .fancybox__nav {
+            --carousel-button-bg: rgba(255, 255, 255, 0.05);
+            --carousel-button-svg-width: 24px;
+            --carousel-button-svg-height: 24px;
+        }
+
+        .fancybox__nav .f-button {
+            color: #fff;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .fancybox__nav .f-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .fancybox__nav .f-button svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2px;
+        }
+
+        .fancybox__nav .f-button[data-carousel-prev] {
+            left: 1rem;
+        }
+
+        .fancybox__nav .f-button[data-carousel-next] {
+            right: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .fancybox__nav .f-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .fancybox__nav .f-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .fancybox-zoomIn {
+            animation: fcbZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fancybox-zoomOut {
+            animation: fcbZoomOut 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fcbZoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fcbZoomOut {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Thumbs Navigation */
+        .fancybox__thumbs {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 8px;
+            border-radius: 12px;
+            margin: 0 auto;
+        }
+
+        .fancybox__thumb {
+            width: 96px;
+            height: 72px;
+            border-radius: 6px;
+            opacity: 0.5;
+            transition: all 0.2s ease;
+        }
+
+        .fancybox__thumb:hover {
+            opacity: 0.8;
+        }
+
+        .is-nav-selected .fancybox__thumb {
+            opacity: 1;
+        }
+        
+        body {
+            font-family: 'General Sans', sans-serif;
+            background: #0A0A0A;
         }
     </style>
 </head>
-<body class="bg-[#0A0A0A] text-white min-h-screen">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm z-40 border-b border-white/5">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-xl font-bold">Project Details</h1>
-            </div>
-        </div>
-    </nav>
-
+<body class="min-h-screen text-white">
     <!-- Back to Portfolio Button -->
-    <a href="index.html" class="back-button group">
+    <a href="#" onclick="goBack()" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 group">
         <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span class="font-medium">Back to Portfolio</span>
+            <span class="font-medium">Back</span>
         </div>
     </a>
 
@@ -56,59 +286,10 @@
     <section class="pt-32 pb-16 relative">
         <!-- Noise Background -->
         <div class="absolute inset-0 noise-bg"></div>
-
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <!-- Project Header -->
-                <div class="mb-12">
-                    <h1 id="projectTitle" class="text-4xl md:text-5xl font-bold mb-6">Project Title</h1>
-                    <div class="flex flex-wrap gap-3">
-                        <div id="projectTags" class="flex flex-wrap gap-2">
-                            <!-- Tags will be populated here -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Image -->
-                <div id="projectImageContainer" class="mb-12 rounded-xl overflow-hidden">
-                    <img id="projectImage" src="" alt="Project Image" class="w-full h-auto">
-                </div>
-
-                <!-- Video Embed Section -->
-                <div id="videoContainer" class="mb-12 rounded-xl overflow-hidden aspect-video hidden video-container">
-                    <iframe id="videoEmbed" 
-                        class="w-full h-full"
-                        src="https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview"
-                        allow="autoplay"
-                        allowfullscreen
-                        frameborder="0"
-                        style="border: 0; pointer-events: auto;">
-                    </iframe>
-                </div>
-
-                <!-- Project Description -->
-                <div class="prose prose-invert max-w-none">
-                    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
-                    <p id="projectDescription" class="text-white/80 mb-8">Project description will be loaded here.</p>
-
-                    <h2 class="text-2xl font-bold mb-4">Features</h2>
-                    <ul id="projectFeatures" class="list-disc pl-6 text-white/80 mb-8">
-                        <!-- Features will be loaded here -->
-                    </ul>
-
-                    <h2 class="text-2xl font-bold mb-4">Technical Details</h2>
-                    <p id="projectTechnical" class="text-white/80">Technical details will be loaded here.</p>
-                </div>
-
-                <!-- Project Links -->
-                <div class="mt-12 flex gap-4">
-                    <a id="liveDemo" href="#" target="_blank" class="inline-flex items-center px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 transition-colors">
-                        View Live Demo
-                    </a>
-                    <a id="sourceCode" href="#" target="_blank" class="inline-flex items-center px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors">
-                        Source Code
-                    </a>
-                </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div id="projectDetails" class="max-w-4xl mx-auto">
+                <!-- Content will be dynamically loaded here -->
             </div>
         </div>
     </section>
@@ -118,117 +299,359 @@
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             return {
-                id: params.get('id')
+                id: params.get('project')
             };
         }
+
+        // Project data collection
+        const projects = {
+            'project1': {
+                title: 'Ascomfest 2024',
+                subtitle: 'After Movie Project',
+                description: 'Successfully crafted a visually engaging after movie for Ascomfest 2024, highlighting the event\'s essence through seamless editing, cinematic storytelling, and powerful synchronization of visuals and music. Delivered a polished final cut that captures the energy and spirit of the event.',
+                role: 'Video Editor',
+                duration: 'November 2024',
+                technologies: ['Capcut', 'Adobe Premiere', 'Canva', 'Video Editing', 'Sound Design'],
+                videoUrl: 'https://drive.google.com/file/d/1rQhAlj5T-T8dlKO6tiv_JIs04gNeL0DE/preview',
+                challenges: [
+                    'Maintaining consistent visual style throughout the video',
+                    'Synchronizing footage with music beats',
+                    'Creating smooth transitions between scenes',
+                    'Balancing audio levels for optimal viewing experience'
+                ],
+                outcomes: [
+                    'Created a dynamic and engaging after movie',
+                    'Successfully captured the event\'s atmosphere and energy',
+                    'Received positive feedback from event organizers',
+                    'Enhanced portfolio with professional video editing work'
+                ],
+                images: [
+                    '',
+                    '',
+                    ''
+                ],
+                link: '#'
+            },
+            'project2': {
+                title: 'PWS Calendar 2025',
+                subtitle: 'ID Card & Notebook Design',
+                description: 'Successfully completed the design and photoshoot for PT PWS\'s 2025 calendar, showcasing a professional concept aligned with the company\'s brand identity. Additionally designed ID cards and notebooks with a focus on functional and aesthetic design, supporting the company\'s visual needs.',
+                role: 'Graphic Designer & Photographer',
+                duration: 'December 2024',
+                technologies: ['Adobe Photoshop', 'Canva', 'Photography', 'Layout Design', 'Typography', 'Collab with Nisriinaa Adelia'],
+                collaboration: 'Nisriinaa Adelia M',
+                challenges: [
+                    'Creating cohesive design across multiple materials',
+                    'Integrating company branding elements effectively',
+                    'Coordinating photoshoot sessions',
+                    'Balancing aesthetics with functionality'
+                ],
+                outcomes: [
+                    'Delivered professional calendar design',
+                    'Created matching ID cards and notebooks',
+                    'Successfully captured company culture in design',
+                    'Received positive feedback from stakeholders'
+                ],
+                images: [
+                    'assets/projects/pws-calendar/cover.png',
+                    'assets/projects/pws-calendar/calendar.png',
+                    'assets/projects/pws-calendar/calendar2.png',
+                    'assets/projects/pws-calendar/notebook.png',
+                    'assets/projects/pws-calendar/notebook2.png',
+                    'assets/projects/pws-calendar/notebook3.png'
+                ]
+            },
+            'project3': {
+                title: 'Gambreng by Gamabaswara',
+                subtitle: 'Creative Music Video Project',
+                description: 'Created engaging music video and arranged song, focusing on social and culture. The project aimed to be presented in commemoration of the 79th Independence Day of Indonesia.',
+                role: 'Director and Editor',
+                duration: 'April 2024',
+                technologies: ['Capcut', 'Canva', 'Photography', 'Video Editing', 'Sound Design', 'Color Grading'],
+                challenges: [
+                    'Creating engaging short-form content',
+                    'Maintaining consistent visual style',
+                    'Balancing entertainment with corporate messaging',
+                    'Meeting platform-specific requirements'
+                ],
+                outcomes: [
+                    'Increased social media engagement',
+                    'Successfully showcased company culture',
+                    'Created shareable and relatable content',
+                    'Built stronger online presence'
+                ],
+                videoUrl: 'https://drive.google.com/file/d/1Zbc4SjqvgyvVH0juxRxXkyygEC8qxlKf/preview',
+                images: [
+                    'assets/projects/pws-reels/cover.png',
+                    'assets/projects/pws-reels/reel1.png',
+                    'assets/projects/pws-reels/reel2.png',
+                    'assets/projects/pws-reels/reel3.png'
+                ]
+            },
+            'project4': {
+                title: 'The Kaleidoscope Project',
+                subtitle: 'Documentary Video of Gama Baswara',
+                description: 'A documentary video about the journey and achievements of Djarum Beasiswa Plus scholarship awardee',
+                role: 'Director, Editor, and Videographer',
+                duration: 'October 2024',
+                technologies: ['Capcut', 'Canva', 'Typography', 'Video Editing', 'Sound Design', 'Color Grading'],
+                challenges: [
+                    'Capturing diverse stories and experiences',
+                    'Balancing narrative flow with visual appeal',
+                    'Managing large amounts of footage',
+                    'Creating cohesive visual style throughout'
+                ],
+                outcomes: [
+                    'Produced a compelling documentary showcasing scholarship impact',
+                    'Successfully captured individual stories and collective achievements',
+                    'Enhanced portfolio with professional documentary work'
+                ],
+                videoUrl: 'https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview'
+            },
+            'project5': {
+                title: 'Company Profile Video of UKM PCC',
+                subtitle: 'Student Organization Showcase',
+                description: 'A comprehensive company profile for UKM PCC (Polytechnic Computer Club), highlighting the organization\'s activities, achievements, and impact on student development.',
+                role: 'Director, Videographer, and Editor',
+                duration: 'March 2023',
+                technologies: ['Adobe Illustrator', 'Canva', 'Video Editing', 'Content Writing'],
+                challenges: [
+                    'Capturing the essence of UKM PCC',
+                    'Balancing informative content with engaging design',
+                    'Showcasing diverse activities and achievements',
+                    'Creating a cohesive narrative across different media'
+                ],
+                outcomes: [
+                    'Increased visibility of UKM PCC within the campus',
+                    'Improved recruitment of new members',
+                    'Enhanced understanding of UKM PCC\'s role in student development',
+                    'Positive feedback from organization members and faculty'
+                ],
+                videoUrl: 'https://www.youtube.com/embed/NhCzFnbnByQ?si=vTnXnSHDy_61oN_6',
+                images: [
+                    'assets/projects/pcc/1.jpg',
+                    'assets/projects/pcc/2.jpg',
+                    'assets/projects/pcc/3.jpg'
+                ]
+            },
+            'project6': {
+                title: 'AI Chat Assistant',
+                subtitle: 'Natural Language Processing',
+                description: 'An intelligent chat assistant powered by advanced NLP models, providing contextual responses and task automation.',
+                role: 'AI Developer',
+                duration: 'August 2024',
+                technologies: ['Python', 'OpenAI API', 'Flask', 'React'],
+                challenges: [
+                    'Implementing context-aware responses',
+                    'Optimizing API usage',
+                    'Handling concurrent user sessions',
+                    'Fine-tuning model responses'
+                ],
+                outcomes: [
+                    'High accuracy in response generation',
+                    'Efficient resource utilization',
+                    'Positive user satisfaction scores',
+                    'Successful task automation implementation'
+                ],
+                images: [
+                    'assets/img/projects/project5-main.jpg',
+                    'assets/img/projects/project5-1.jpg',
+                    'assets/img/projects/project5-2.jpg'
+                ]
+            },
+            'project7': {
+                title: 'Blockchain Marketplace',
+                subtitle: 'Web3 Development',
+                description: 'A decentralized marketplace for digital assets, built on Ethereum blockchain with smart contract integration.',
+                role: 'Blockchain Developer',
+                duration: 'July 2024',
+                technologies: ['Solidity', 'Web3.js', 'Next.js', 'MetaMask'],
+                challenges: [
+                    'Smart contract security',
+                    'Gas optimization',
+                    'Wallet integration',
+                    'Transaction management'
+                ],
+                outcomes: [
+                    'Secure smart contract deployment',
+                    'Successful marketplace launch',
+                    'Efficient gas usage',
+                    'Growing user base'
+                ],
+                images: [
+                    'assets/img/projects/project6-main.jpg',
+                    'assets/img/projects/project6-1.jpg',
+                    'assets/img/projects/project6-2.jpg'
+                ]
+            }
+        };
 
         // Load project details based on URL parameter
         function loadProjectDetails() {
             const { id } = getUrlParams();
+            const project = projects[id];
             
-            // Project data collection
-            const projects = {
-                "1": {
-                    title: "Creative Video Production",
-                    tags: ["Video Editing", "After Effects", "Premier Pro", "Color Grading"],
-                    image: "assets/project1.jpg",
-                    videoUrl: "https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview",
-                    description: "A collection of creative video projects showcasing advanced editing techniques, motion graphics, and storytelling. Each video is carefully crafted to deliver engaging content while maintaining professional quality standards.",
-                    features: [
-                        "Professional color grading and color correction",
-                        "Custom motion graphics and animations",
-                        "Sound design and audio mixing",
-                        "Cinematic transitions and effects",
-                        "4K resolution output"
-                    ],
-                    technical: "Projects were created using industry-standard software including Adobe Premier Pro for primary editing, After Effects for motion graphics and visual effects, and DaVinci Resolve for advanced color grading. All videos are optimized for both web and mobile viewing, with careful attention to file compression and quality preservation.",
-                    demoUrl: "https://youtube.com",
-                    sourceUrl: "https://github.com"
-                },
-                "2": {
-                    title: "Modern Graphic Design Portfolio",
-                    tags: ["Photoshop", "Illustrator", "Brand Design", "UI/UX"],
-                    image: "assets/project2.jpg",
-                    description: "A comprehensive collection of graphic design work including brand identity designs, marketing materials, and digital assets. This portfolio demonstrates versatility in style while maintaining consistent quality across different design mediums.",
-                    features: [
-                        "Brand identity and logo design",
-                        "Marketing material design",
-                        "Social media graphics",
-                        "UI/UX design elements",
-                        "Print-ready layouts"
-                    ],
-                    technical: "All designs are created using Adobe Creative Suite, primarily Photoshop and Illustrator. Projects follow modern design principles with careful attention to typography, color theory, and composition. Files are organized in a systematic way with proper layer management and color profiles for both digital and print media.",
-                    demoUrl: "https://behance.net",
-                    sourceUrl: "https://dribbble.com"
-                },
-                "3": {
-                    title: "Photography Collection",
-                    tags: ["Portrait", "Landscape", "Commercial", "Lightroom"],
-                    image: "assets/project3.jpg",
-                    description: "An extensive photography portfolio showcasing various styles and techniques in both digital and analog photography. The collection includes portraits, landscapes, and commercial photography, each demonstrating unique approaches to composition and lighting.",
-                    features: [
-                        "Professional portrait photography",
-                        "Landscape and nature shots",
-                        "Commercial product photography",
-                        "Event coverage",
-                        "Advanced post-processing techniques"
-                    ],
-                    technical: "Photos are captured using professional-grade DSLR and mirrorless cameras, with a variety of professional lenses for different situations. Post-processing is done in Adobe Lightroom and Photoshop, with careful attention to color accuracy and detail preservation. All images are available in both web-optimized and high-resolution formats.",
-                    demoUrl: "https://500px.com",
-                    sourceUrl: "https://instagram.com"
-                }
-            };
+            if (project) {
+                // Helper function to check if an array has valid content
+                const hasValidContent = (arr) => Array.isArray(arr) && arr.length > 0 && arr.some(item => item && item.trim() !== '');
+                
+                document.getElementById('projectDetails').innerHTML = `
+                    <div class="glass-effect rounded-2xl p-8">
+                        ${project.videoUrl ? `
+                        <!-- Video Embed -->
+                        <div class="aspect-video rounded-xl overflow-hidden mb-8">
+                            <iframe src="${project.videoUrl}" 
+                                class="w-full h-full"
+                                allow="autoplay" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        ` : ''}
+                        
+                        <h1 class="text-4xl font-bold mb-2">${project.title}</h1>
+                        ${project.subtitle ? `<p class="text-xl text-white/60 mb-6">${project.subtitle}</p>` : ''}
+                        
+                        ${project.description ? `
+                        <p class="text-white/80 mb-8">${project.description}</p>
+                        ` : ''}
 
-            // Get project data based on ID
-            const projectData = projects[id] || {
-                title: "Project Not Found",
-                tags: [],
-                image: "assets/placeholder.jpg",
-                description: "Project details not available.",
-                features: [],
-                technical: "No technical details available.",
-                demoUrl: "#",
-                sourceUrl: "#"
-            };
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            ${(project.role || project.duration) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4">Project Details</h3>
+                                <div class="space-y-2 text-white/80">
+                                    ${project.role ? `<p><span class="text-white/60">Role:</span> ${project.role}</p>` : ''}
+                                    ${project.duration ? `<p><span class="text-white/60">Duration:</span> ${project.duration}</p>` : ''}
+                                </div>
+                            </div>
+                            ` : ''}
+                            
+                            ${hasValidContent(project.technologies) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4">Technologies Used</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${project.technologies.map(tag => `
+                                        <span class="px-3 py-1 rounded-full text-sm bg-white/10">${tag}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="space-y-6 mb-8">
+                            ${hasValidContent(project.challenges) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Challenges</h3>
+                                <ul class="list-disc pl-4 text-white/80">
+                                    ${project.challenges.map(challenge => `
+                                        <li>${challenge}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
 
-            // Update the DOM with project details
-            document.getElementById('projectTitle').textContent = projectData.title;
-            
-            // Handle video/image display
-            const imageContainer = document.getElementById('projectImageContainer');
-            const videoContainer = document.getElementById('videoContainer');
-            const videoEmbed = document.getElementById('videoEmbed');
-            
-            if (projectData.videoUrl) {
-                imageContainer.classList.add('hidden');
-                videoContainer.classList.remove('hidden');
-                videoEmbed.src = projectData.videoUrl;
-            } else {
-                imageContainer.classList.remove('hidden');
-                videoContainer.classList.add('hidden');
-                document.getElementById('projectImage').src = projectData.image;
+                            ${hasValidContent(project.outcomes) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Outcomes</h3>
+                                <ul class="list-disc pl-4 text-white/80">
+                                    ${project.outcomes.map(outcome => `
+                                        <li>${outcome}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
+                        </div>
+                        
+                        ${hasValidContent(project.images) ? `
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Project Gallery</h3>
+                            <div class="project-gallery" id="projectGallery">
+                                ${project.images.map((image, index) => `
+                                    ${image ? `
+                                    <div class="gallery-item">
+                                        <a 
+                                            href="${image}"
+                                            data-fancybox="gallery"
+                                            class="block w-full h-full">
+                                            <img src="${image}" alt="${project.title} - Image ${index + 1}" class="w-full h-full object-cover">
+                                        </a>
+                                    </div>
+                                    ` : ''}
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                // Initialize Fancybox for this specific gallery
+                Fancybox.destroy();
+                Fancybox.bind(`[data-fancybox="gallery"]`, {
+                    animated: true,
+                    showClass: "fancybox-zoomIn",
+                    hideClass: "fancybox-zoomOut",
+                    dragToClose: true,
+                    closeButton: false,
+                    
+                    Navigation: {
+                        arrows: true,
+                        prevTpl: '<button class="f-button" title="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>',
+                        nextTpl: '<button class="f-button" title="Next"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>'
+                    },
+                    Image: {
+                        zoom: true,
+                        fit: "contain",
+                        click: "toggleZoom",
+                        wheel: "zoom",
+                        zoomOpacity: "auto",
+                        initialSize: "fit",
+                        preload: true,
+                        animated: true,
+                        breakpoints: {
+                            "(max-width: 768px)": {
+                                click: "close"
+                            }
+                        }
+                    },
+                    l10n: {
+                        CLOSE: "Tutup",
+                        NEXT: "Selanjutnya",
+                        PREV: "Sebelumnya",
+                        MODAL: "Galeri Gambar",
+                        TOGGLE_SLIDESHOW: "Putar Otomatis",
+                        TOGGLE_FULLSCREEN: "Layar Penuh",
+                        TOGGLE_THUMBS: "Thumbnail",
+                    }
+                });
+
+                // Add click event listeners to gallery items
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        if (item.classList.contains('error')) {
+                            e.preventDefault();
+                            alert('Sorry, this image failed to load');
+                        }
+                    });
+                });
             }
-            
-            document.getElementById('projectDescription').textContent = projectData.description;
-            document.getElementById('projectTechnical').textContent = projectData.technical;
-            document.getElementById('liveDemo').href = projectData.demoUrl;
-            document.getElementById('sourceCode').href = projectData.sourceUrl;
-
-            // Update tags
-            const tagsContainer = document.getElementById('projectTags');
-            tagsContainer.innerHTML = projectData.tags.map(tag => 
-                `<span class="px-4 py-2 rounded-full text-sm font-medium bg-white/5 hover:bg-white/10 text-white/80 transition-colors">${tag}</span>`
-            ).join('');
-
-            // Update features
-            const featuresContainer = document.getElementById('projectFeatures');
-            featuresContainer.innerHTML = projectData.features.map(feature => 
-                `<li>${feature}</li>`
-            ).join('');
         }
 
         // Load project details when page loads
-        window.addEventListener('load', loadProjectDetails);
+        window.addEventListener('DOMContentLoaded', loadProjectDetails);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Back button functionality
+        function goBack() {
+            const referrer = document.referrer;
+            if (referrer && referrer.includes('index.html')) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const section = urlParams.get('from') || 'projects';
+                window.location.href = `index.html#${section}`;
+            } else {
+                window.history.back();
+            }
+        }
     </script>
 </body>
 </html>
