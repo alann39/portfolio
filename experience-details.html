@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience Details - Awwalun A</title>
+    <title>Experience Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0A0A0A;
-        }
         .noise-bg {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             opacity: 0.02;
         }
         .glass-effect {
@@ -22,12 +18,6 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.75));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
         .back-button {
             position: fixed;
@@ -40,9 +30,23 @@
         .back-button:hover {
             transform: translateX(-50%) translateY(-2px);
         }
+        body {
+            font-family: 'General Sans', sans-serif;
+            background: #0A0A0A;
+        }
     </style>
 </head>
-<body class="bg-[#0A0A0A] text-white min-h-screen">
+<body class="text-white min-h-screen">
+    <!-- Back to Portfolio Button -->
+    <a href="#" onclick="goBack()" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 group">
+        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="font-medium">Back</span>
+        </div>
+    </a>
+
     <!-- Navigation -->
     <nav class="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm z-40 border-b border-white/5">
         <div class="container mx-auto px-4 py-4">
@@ -52,174 +56,204 @@
         </div>
     </nav>
 
-    <!-- Back to Portfolio Button -->
-    <a href="index.html" class="back-button group">
-        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            <span class="font-medium">Back to Portfolio</span>
-        </div>
-    </a>
-
-    <!-- Experience Details Content -->
-    <div class="container mx-auto px-4 pt-32">
-        <div class="max-w-4xl mx-auto">
-            <div id="experienceDetails" class="glass-effect rounded-2xl p-8 space-y-8">
-                <!-- Content will be dynamically loaded -->
+    <!-- Experience Details Section -->
+    <section class="pt-32 pb-16 relative">
+        <!-- Noise Background -->
+        <div class="absolute inset-0 noise-bg"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div id="experienceDetails" class="max-w-4xl mx-auto">
+                <!-- Content will be dynamically loaded here -->
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const year = urlParams.get('year');
-            const experienceDetails = document.getElementById('experienceDetails');
-
-            // Experience data object
-            const experiences = {
-                '2025': {
-                    title: 'Senior Frontend Developer',
-                    company: 'Tech Innovations Inc',
-                    period: 'January 2025 - Present',
-                    description: 'Leading frontend development initiatives and mentoring junior developers.',
-                    responsibilities: [
-                        'Lead a team of 5 frontend developers',
-                        'Architect and implement scalable frontend solutions',
-                        'Conduct code reviews and maintain coding standards',
-                        'Collaborate with UX/UI designers for optimal user experience'
-                    ],
-                    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-                    achievements: [
-                        'Reduced page load time by 40%',
-                        'Implemented new CI/CD pipeline',
-                        'Led successful migration to Next.js'
-                    ]
-                },
-                '2024': {
-                    title: 'Frontend Developer',
-                    company: 'Digital Solutions Co',
-                    period: 'March 2024 - December 2024',
-                    description: 'Developed and maintained modern web applications using React and related technologies.',
-                    responsibilities: [
-                        'Built responsive and interactive user interfaces',
-                        'Optimized application performance',
-                        'Implemented state management solutions',
-                        'Collaborated with backend team for API integration'
-                    ],
-                    technologies: ['React', 'Redux', 'JavaScript', 'SASS'],
-                    achievements: [
-                        'Delivered 5 major feature releases',
-                        'Improved test coverage to 85%',
-                        'Mentored 2 junior developers'
-                    ]
-                },
-                '2023': {
-                    title: 'Software Developer Intern',
-                    company: 'Tech Company XYZ',
-                    period: 'June 2023 - February 2024',
-                    description: 'Gained hands-on experience in full-stack web development.',
-                    responsibilities: [
-                        'Developed and maintained web applications',
-                        'Collaborated with senior developers',
-                        'Participated in code reviews',
-                        'Assisted in bug fixing and testing'
-                    ],
-                    technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js'],
-                    achievements: [
-                        'Successfully completed 3 client projects',
-                        'Implemented new responsive design system',
-                        'Contributed to team documentation'
-                    ]
-                },
-                '2022': {
-                    title: 'Frontend Developer',
-                    company: 'Creative Agency ABC',
-                    period: 'January 2022 - December 2022',
-                    description: 'Worked on various client projects focusing on frontend development.',
-                    responsibilities: [
-                        'Built responsive user interfaces',
-                        'Implemented modern web technologies',
-                        'Collaborated with design team',
-                        'Maintained existing web applications'
-                    ],
-                    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
-                    achievements: [
-                        'Completed 10+ client websites',
-                        'Improved mobile responsiveness',
-                        'Received client satisfaction award'
-                    ]
-                },
-                '2021': {
-                    title: 'Web Development Student',
-                    company: 'Online Bootcamp',
-                    period: 'March 2021 - December 2021',
-                    description: 'Intensive web development training program.',
-                    responsibilities: [
-                        'Learned full-stack development',
-                        'Completed various projects',
-                        'Participated in team projects',
-                        'Studied modern web technologies'
-                    ],
-                    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP'],
-                    achievements: [
-                        'Graduated with honors',
-                        'Built 5 full-stack applications',
-                        'Won best project award'
-                    ]
-                }
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                year: params.get('year'),
+                company: params.get('company'),
+                org: params.get('org')
             };
+        }
 
-            if (year && experiences[year]) {
-                const exp = experiences[year];
-                experienceDetails.innerHTML = `
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <h1 class="text-3xl font-bold gradient-text">${exp.title}</h1>
-                            <div class="px-4 py-1 rounded-full bg-white/10 text-sm">${year}</div>
+        // Experience data collection
+        const experiences = {
+            'pcc2024': {
+                title: 'Research & Development Division',
+                company: 'Polytechnic Computer Club',
+                period: 'May 2023 - May 2024',
+                description: 'Student Activity Unit at Politeknik Negeri Semarang focusing on the field of IT.',
+                responsibilities: [
+                    'Supervised and developed organizational functions',
+                    'Led UKM PCC handover ceremony 2024',
+                    'Collaborated with team members on various IT projects',
+                    'Participated in organizational development and planning'
+                ],
+                technologies: ['IT Management', 'Team Leadership', 'Project Planning', 'Event Management'],
+                achievements: [
+                    'Successfully led the UKM PCC handover ceremony 2024',
+                    'Contributed to organizational growth and development',
+                    'Enhanced team collaboration and communication'
+                ],
+                image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop',
+                color: 'blue'
+            },
+            'pcc2023': {
+                title: 'Redaksi Division Head',
+                company: 'Polytechnic Computer Club',
+                period: 'May 2022 - May 2023',
+                description: 'Student Activity Unit at Politeknik Negeri Semarang focusing on the field of IT.',
+                responsibilities: [
+                    'Managed and supervised social media and branding activities',
+                    'Led a team for organized events and agendas',
+                    'Documented and published all organizational activities',
+                    'Created creative and informative content'
+                ],
+                technologies: ['IT Management', 'Social Media Management', 'Content Creation', 'Branding'],
+                achievements: [
+                    'Successfully increased organizational reach by 20%',
+                    'Improved content quality and engagement',
+                    'Enhanced organizational branding and visibility'
+                ],
+                image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop',
+                color: 'pink'
+            },
+            'general-software': {
+                title: 'Digital Marketing Staff Intern',
+                company: 'PT General Software Indonesia',
+                period: 'August 2023 - October 2023',
+                description: 'Internship focused on digital marketing and product design in a digital company.',
+                responsibilities: [
+                    'Managed e-commerce platforms and product design',
+                    'Collaborated with team members on marketing strategies',
+                    'Created and maintained digital marketing materials',
+                    'Assisted in product development and marketing campaigns'
+                ],
+                technologies: ['Digital Marketing', 'E-commerce', 'Product Design', 'Team Collaboration'],
+                achievements: [
+                    'Successfully managed e-commerce platforms',
+                    'Contributed to product design improvements',
+                    'Enhanced team collaboration efficiency'
+                ],
+                image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop',
+                color: 'emerald'
+            },
+            'djarum': {
+                title: 'Media Creative Staff',
+                company: 'Djarum Beasiswa Plus 39',
+                period: 'October 2023 - November 2024',
+                description: 'Managing creative media content and social media presence for the Djarum Scholarship Organization (Gama Baswara).',
+                responsibilities: [
+                    'Managed branding and socmed accounts',
+                    'Created creative and informative content',
+                    'Documented organizational activities'
+                ],
+                technologies: ['Social Media Management', 'Content Creation', 'Branding', 'Documentation'],
+                achievements: [
+                    'Improved social media engagement and reach',
+                    'Successfully documented various organizational events',
+                    'Created engaging and informative content',
+                    'Successfully created 2 major video projects, music video and documenter video '
+                ],
+                image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop',
+                color: 'purple'
+            },
+            'pws': {
+                title: 'Finance, Tax, and Risk Management Intern',
+                company: 'PT Putra Wijayakusuma Sakti',
+                period: 'June 2024 - October 2024',
+                description: 'Internship focused on finance, tax management, and risk assessment in a major corporation.',
+                responsibilities: [
+                    'Handled financial tasks and risk assessment',
+                    'Handled tax-related documentation and analysis',
+                    'Led HUT RI event committee of 50+ people',
+                    'Managed 5 events in 6th Anniversary PWS series'
+                ],
+                technologies: ['Financial Reporting', 'Accounting', 'Tax Analysis', 'Risk Assessment', 'Event Management'],
+                achievements: [
+                    'Successfully led large-scale event with 50+ committee members',
+                    'Managed multiple events in HUT PWS series',
+                    'Contributed to financial and risk management improvements'
+                ],
+                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop',
+                color: 'blue'
+            }
+        };
+
+        // Load experience details based on URL parameter
+        function loadExperienceDetails() {
+            const { year, company, org } = getUrlParams();
+            let experienceKey;
+            
+            if (company) {
+                experienceKey = company;
+            } else if (org) {
+                experienceKey = org;
+            }
+            
+            const experience = experiences[experienceKey];
+            
+            if (experience) {
+                document.getElementById('experienceDetails').innerHTML = `
+                    <div class="glass-effect rounded-2xl p-8">
+                        <div class="aspect-video rounded-xl overflow-hidden mb-8">
+                            <img src="${experience.image}" alt="${experience.title} at ${experience.company}" class="w-full h-full object-cover">
                         </div>
-                        <div class="space-y-2">
-                            <p class="text-xl text-white/80">${exp.company}</p>
-                            <p class="text-white/60">${exp.period}</p>
-                        </div>
-                        <p class="text-white/80 leading-relaxed">${exp.description}</p>
                         
-                        <div class="space-y-4">
-                            <h2 class="text-xl font-semibold">Key Responsibilities</h2>
-                            <ul class="list-disc pl-5 space-y-2 text-white/70">
-                                ${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}
-                            </ul>
+                        <div class="mb-8">
+                            <h1 class="text-3xl font-semibold mb-2">${experience.title}</h1>
+                            <p class="text-xl text-white/80 mb-2">${experience.company}</p>
+                            <p class="text-white/60">${experience.period}</p>
                         </div>
-
-                        <div class="space-y-4">
-                            <h2 class="text-xl font-semibold">Technologies Used</h2>
-                            <div class="flex flex-wrap gap-2">
-                                ${exp.technologies.map(tech => `
-                                    <span class="px-3 py-1 rounded-full bg-white/10 text-sm">${tech}</span>
-                                `).join('')}
+                        
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-semibold mb-4">Overview</h2>
+                            <p class="text-white/80">${experience.description}</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h2 class="text-2xl font-semibold mb-4">Responsibilities</h2>
+                                <ul class="list-disc list-inside text-white/80 space-y-2">
+                                    ${experience.responsibilities.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h2 class="text-2xl font-semibold mb-4">Technologies & Skills</h2>
+                                <div class="flex flex-wrap gap-2">
+                                    ${experience.technologies.map(tech => `
+                                        <span class="px-3 py-1 rounded-full bg-white/10 text-white/80 text-sm">${tech}</span>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="space-y-4">
-                            <h2 class="text-xl font-semibold">Key Achievements</h2>
-                            <ul class="list-disc pl-5 space-y-2 text-white/70">
-                                ${exp.achievements.map(a => `<li>${a}</li>`).join('')}
+                        <div class="mt-8">
+                            <h2 class="text-2xl font-semibold mb-4">Key Achievements</h2>
+                            <ul class="list-disc list-inside text-white/80 space-y-2">
+                                ${experience.achievements.map(item => `<li>${item}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
                 `;
-            } else {
-                experienceDetails.innerHTML = `
-                    <div class="text-center py-12">
-                        <h1 class="text-2xl font-bold text-white/60">Experience details not found</h1>
-                        <a href="index.html" class="inline-block mt-4 px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
-                            Return to Portfolio
-                        </a>
-                    </div>
-                `;
             }
-        });
+        }
+
+        // Back button functionality
+        function goBack() {
+            if (document.referrer.includes(window.location.host)) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html#experience';
+            }
+        }
+
+        // Load experience details when page loads
+        window.addEventListener('DOMContentLoaded', loadExperienceDetails);
     </script>
 </body>
 </html>
