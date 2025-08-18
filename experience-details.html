@@ -7,54 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
-    <style>
-        .noise-bg {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.02;
-        }
-        .glass-effect {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-        }
-        .back-button {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 50;
-            transition: all 0.3s ease;
-        }
-        .back-button:hover {
-            transform: translateX(-50%) translateY(-2px);
-        }
-        body {
-            font-family: 'General Sans', sans-serif;
-            background: #0A0A0A;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/details.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body class="text-white min-h-screen">
-    <!-- Back to Portfolio Button -->
-    <a href="#" onclick="goBack()" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 group">
-        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            <span class="font-medium">Back</span>
-        </div>
-    </a>
-
     <!-- Navigation -->
-    <nav class="fixed w-full bg-[#0A0A0A]/90 backdrop-blur-sm z-40 border-b border-white/5">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-xl font-bold">Experience Details</h1>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
 
     <!-- Experience Details Section -->
     <section class="pt-32 pb-16 relative">
@@ -243,17 +202,9 @@
             }
         }
 
-        // Back button functionality
-        function goBack() {
-            if (document.referrer.includes(window.location.host)) {
-                window.history.back();
-            } else {
-                window.location.href = 'index.html#experience';
-            }
-        }
-
         // Load experience details when page loads
         window.addEventListener('DOMContentLoaded', loadExperienceDetails);
     </script>
+    <script src="scripts/components.js"></script>
 </body>
 </html>

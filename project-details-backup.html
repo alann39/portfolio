@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/details.css">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+
+    <!-- Project Details Section -->
+    <section class="pt-32 pb-16 relative">
+        <!-- Noise Background -->
+        <div class="absolute inset-0 noise-bg"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div id="projectDetails" class="max-w-4xl mx-auto">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('project')
+            };
+        }
+
+        // Project data collection
+        const projects = {
+            'project1': {
+                title: 'Ascomfest 2024',
+                subtitle: 'After Movie Project',
+                description: 'Successfully crafted a visually engaging after movie for Ascomfest 2024, highlighting the event\'s essence through seamless editing, cinematic storytelling, and powerful synchronization of visuals and music. Delivered a polished final cut that captures the energy and spirit of the event.',
+                role: 'Video Editor',
+                duration: 'November 2024',
+                technologies: ['Capcut', 'Adobe Premiere', 'Canva', 'Video Editing', 'Sound Design'],
+                videoUrl: 'https://drive.google.com/file/d/1rQhAlj5T-T8dlKO6tiv_JIs04gNeL0DE/preview',
+                challenges: [
+                    'Maintaining consistent visual style throughout the video',
+                    'Synchronizing footage with music beats',
+                    'Creating smooth transitions between scenes',
+                    'Balancing audio levels for optimal viewing experience'
+                ],
+                outcomes: [
+                    'Created a dynamic and engaging after movie',
+                    'Successfully captured the event\'s atmosphere and energy',
+                    'Received positive feedback from event organizers',
+                    'Enhanced portfolio with professional video editing work'
+                ],
+                images: [
+                    'assets/projects/ascomfest2024/cover.jpg'
+                ],
+                link: '#'
+            },
+            'project2': {
+                title: 'PWS Calendar 2025',
+                subtitle: 'ID Card & Notebook Design',
+                description: 'Successfully completed the design and photoshoot for PT PWS\'s 2025 calendar, showcasing a professional concept aligned with the company\'s brand identity. Additionally designed ID cards and notebooks with a focus on functional and aesthetic design, supporting the company\'s visual needs.',
+                role: 'Graphic Designer & Photographer',
+                duration: 'December 2024',
+                technologies: ['Adobe Photoshop', 'Canva', 'Photography', 'Layout Design', 'Typography', 'Collab with Nisriinaa Adelia'],
+                collaboration: 'Nisriinaa Adelia M',
+                challenges: [
+                    'Creating cohesive design across multiple materials',
+                    'Integrating company branding elements effectively',
+                    'Coordinating photoshoot sessions',
+                    'Balancing aesthetics with functionality'
+                ],
+                outcomes: [
+                    'Delivered professional calendar design',
+                    'Created matching ID cards and notebooks',
+                    'Successfully captured company culture in design',
+                    'Received positive feedback from stakeholders'
+                ],
+                images: [
+                    'assets/projects/pws-calendar/cover.png',
+                    'assets/projects/pws-calendar/calendar.png',
+                    'assets/projects/pws-calendar/calendar2.png',
+                    'assets/projects/pws-calendar/notebook.png',
+                    'assets/projects/pws-calendar/notebook2.png',
+                    'assets/projects/pws-calendar/notebook3.png'
+                ]
+            },
+            'project3': {
+                title: 'Gambreng by Gamabaswara',
+                subtitle: 'Creative Music Video Project',
+                description: 'Created engaging music video and arranged song, focusing on social and culture. The project aimed to be presented in commemoration of the 79th Independence Day of Indonesia.',
+                role: 'Director and Editor',
+                duration: 'April 2024',
+                technologies: ['Capcut', 'Canva', 'Photography', 'Video Editing', 'Sound Design', 'Color Grading'],
+                challenges: [
+                    'Creating engaging short-form content',
+                    'Maintaining consistent visual style',
+                    'Balancing entertainment with corporate messaging',
+                    'Meeting platform-specific requirements'
+                ],
+                outcomes: [
+                    'Increased social media engagement',
+                    'Successfully showcased company culture',
+                    'Created shareable and relatable content',
+                    'Built stronger online presence'
+                ],
+                videoUrl: 'https://drive.google.com/file/d/1Zbc4SjqvgyvVH0juxRxXkyygEC8qxlKf/preview',
+                images: [
+                    'assets/projects/gambreng/cover.jpg'
+                ]
+            },
+            'project4': {
+                title: 'The Kaleidoscope Project',
+                subtitle: 'Documentary Video of Gama Baswara',
+                description: 'A documentary video about the journey and achievements of Djarum Beasiswa Plus scholarship awardee',
+                role: 'Director, Editor, and Videographer',
+                duration: 'October 2024',
+                technologies: ['Capcut', 'Canva', 'Typography', 'Video Editing', 'Sound Design', 'Color Grading'],
+                challenges: [
+                    'Capturing diverse stories and experiences',
+                    'Balancing narrative flow with visual appeal',
+                    'Managing large amounts of footage',
+                    'Creating cohesive visual style throughout'
+                ],
+                outcomes: [
+                    'Produced a compelling documentary showcasing scholarship impact',
+                    'Successfully captured individual stories and collective achievements',
+                    'Enhanced portfolio with professional documentary work'
+                ],
+                videoUrl: 'https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview',
+                images: [
+                    'assets/projects/kaleidoscope/cover.png'
+                ]
+            },
+            'project5': {
+                title: 'Company Profile Video of UKM PCC',
+                subtitle: 'Student Organization Showcase',
+                description: 'A comprehensive company profile for UKM PCC (Polytechnic Computer Club), highlighting the organization\'s activities, achievements, and impact on student development.',
+                role: 'Director, Videographer, and Editor',
+                duration: 'March 2023',
+                technologies: ['Adobe Illustrator', 'Canva', 'Video Editing', 'Content Writing'],
+                challenges: [
+                    'Capturing the essence of UKM PCC',
+                    'Balancing informative content with engaging design',
+                    'Showcasing diverse activities and achievements',
+                    'Creating a cohesive narrative across different media'
+                ],
+                outcomes: [
+                    'Increased visibility of UKM PCC within the campus',
+                    'Improved recruitment of new members',
+                    'Enhanced understanding of UKM PCC\'s role in student development',
+                    'Positive feedback from organization members and faculty'
+                ],
+                videoUrl: 'https://www.youtube.com/embed/NhCzFnbnByQ?si=vTnXnSHDy_61oN_6',
+                images: [
+                    'assets/projects/pcc/1.JPG',
+                    'assets/projects/pcc/2.JPG',
+                    'assets/projects/pcc/3.JPG'
+                ]
+            },
+            'project6': {
+                title: 'AI Chat Assistant',
+                subtitle: 'Natural Language Processing',
+                description: 'An intelligent chat assistant powered by advanced NLP models, providing contextual responses and task automation.',
+                role: 'AI Developer',
+                duration: 'August 2024',
+                technologies: ['Python', 'OpenAI API', 'Flask', 'React'],
+                challenges: [
+                    'Implementing context-aware responses',
+                    'Optimizing API usage',
+                    'Handling concurrent user sessions',
+                    'Fine-tuning model responses'
+                ],
+                outcomes: [
+                    'High accuracy in response generation',
+                    'Efficient resource utilization',
+                    'Positive user satisfaction scores',
+                    'Successful task automation implementation'
+                ],
+                images: []
+            },
+            'project7': {
+                title: 'Blockchain Marketplace',
+                subtitle: 'Web3 Development',
+                description: 'A decentralized marketplace for digital assets, built on Ethereum blockchain with smart contract integration.',
+                role: 'Blockchain Developer',
+                duration: 'July 2024',
+                technologies: ['Solidity', 'Web3.js', 'Next.js', 'MetaMask'],
+                challenges: [
+                    'Smart contract security',
+                    'Gas optimization',
+                    'Wallet integration',
+                    'Transaction management'
+                ],
+                outcomes: [
+                    'Secure smart contract deployment',
+                    'Successful marketplace launch',
+                    'Efficient gas usage',
+                    'Growing user base'
+                ],
+                images: []
+            }
+        };
+
+        // Load project details based on URL parameter
+        function loadProjectDetails() {
+            const { id } = getUrlParams();
+            const project = projects[id];
+            
+            if (project) {
+                // Helper function to check if an array has valid content
+                const hasValidContent = (arr) => Array.isArray(arr) && arr.length > 0 && arr.some(item => item && item.trim() !== '');
+                
+                document.getElementById('projectDetails').innerHTML = `
+                    <div class="glass-effect rounded-2xl p-8">
+                        ${project.videoUrl ? `
+                        <!-- Video Embed -->
+                        <div class="aspect-video rounded-xl overflow-hidden mb-8">
+                            <iframe src="${project.videoUrl}" 
+                                class="w-full h-full"
+                                allow="autoplay" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        ` : ''}
+                        
+                        <h1 class="text-4xl font-bold mb-2">${project.title}</h1>
+                        ${project.subtitle ? `<p class="text-xl text-white/60 mb-6">${project.subtitle}</p>` : ''}
+                        
+                        ${project.description ? `
+                        <p class="text-white/80 mb-8">${project.description}</p>
+                        ` : ''}
+
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            ${(project.role || project.duration) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4">Project Details</h3>
+                                <div class="space-y-2 text-white/80">
+                                    ${project.role ? `<p><span class="text-white/60">Role:</span> ${project.role}</p>` : ''}
+                                    ${project.duration ? `<p><span class="text-white/60">Duration:</span> ${project.duration}</p>` : ''}
+                                </div>
+                            </div>
+                            ` : ''}
+                            
+                            ${hasValidContent(project.technologies) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4">Technologies Used</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${project.technologies.map(tag => `
+                                        <span class="px-3 py-1 rounded-full text-sm bg-white/10">${tag}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="space-y-6 mb-8">
+                            ${hasValidContent(project.challenges) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Challenges</h3>
+                                <ul class="list-disc pl-4 text-white/80">
+                                    ${project.challenges.map(challenge => `
+                                        <li>${challenge}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
+
+                            ${hasValidContent(project.outcomes) ? `
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Outcomes</h3>
+                                <ul class="list-disc pl-4 text-white/80">
+                                    ${project.outcomes.map(outcome => `
+                                        <li>${outcome}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
+                        </div>
+                        
+                        ${hasValidContent(project.images) ? `
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Project Gallery</h3>
+                            <div class="project-gallery" id="projectGallery">
+                                ${project.images.map((image, index) => `
+                                    ${image ? `
+                                    <div class="gallery-item">
+                                        <a 
+                                            href="${image}"
+                                            data-fancybox="gallery"
+                                            class="block w-full h-full">
+                                            <img src="${image}" 
+                                                 alt="${project.title} - Image ${index + 1}" 
+                                                 class="w-full h-full object-cover"
+                                                 loading="lazy"
+                                                 onerror="console.error('Failed to load:', this.src); this.parentElement.parentElement.style.display='none';"
+                                                 onload="console.log('Image loaded:', this.src)">
+                                        </a>
+                                    </div>
+                                    ` : ''}
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                // Initialize gallery functionality
+                setTimeout(() => {
+                    console.log('Initializing gallery...');
+                    
+                    const galleryItems = document.querySelectorAll('[data-fancybox="gallery"]');
+                    console.log('Found gallery items:', galleryItems.length);
+                    
+                    if (galleryItems.length > 0) {
+                        // Method 1: Try Simple Lightbox first (more reliable)
+                        if (window.simpleLightbox) {
+                            console.log('Using Simple Lightbox');
+                            
+                            galleryItems.forEach((item, index) => {
+                                item.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    console.log('Gallery item clicked:', this.href);
+                                    
+                                    const allImages = Array.from(galleryItems).map(item => item.href);
+                                    window.simpleLightbox.open(allImages, index);
+                                });
+                            });
+                            
+                        // Method 2: Fallback to Fancybox
+                        } else if (typeof $ !== 'undefined' && $.fancybox) {
+                            console.log('Using Fancybox');
+                            
+                            // Clean initialization
+                            $('[data-fancybox="gallery"]').fancybox({
+                                buttons: ['zoom', 'slideShow', 'thumbs', 'close'],
+                                loop: true,
+                                animationEffect: "fade",
+                                transitionEffect: "slide"
+                            });
+                            
+                        // Method 3: Manual implementation
+                        } else {
+                            console.log('Using manual gallery');
+                            
+                            galleryItems.forEach((item, index) => {
+                                item.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    
+                                    // Create simple overlay
+                                    const overlay = document.createElement('div');
+                                    overlay.style.cssText = `
+                                        position: fixed;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        background: rgba(0,0,0,0.9);
+                                        z-index: 9999;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        cursor: pointer;
+                                    `;
+                                    
+                                    const img = document.createElement('img');
+                                    img.src = this.href;
+                                    img.style.cssText = `
+                                        max-width: 90%;
+                                        max-height: 90%;
+                                        object-fit: contain;
+                                    `;
+                                    
+                                    overlay.appendChild(img);
+                                    document.body.appendChild(overlay);
+                                    
+                                    overlay.addEventListener('click', () => {
+                                        document.body.removeChild(overlay);
+                                    });
+                                });
+                            });
+                        }
+                        
+                        console.log('Gallery initialization complete');
+                    }
+                }, 1000);
+                            
+                            // Add backup click handler
+                            item.addEventListener('click', function(e) {
+                                console.log('Manual click detected on:', this.href);
+                                
+                                // If Fancybox didn't handle it, use simple lightbox
+                                setTimeout(() => {
+                                    if (!document.querySelector('.fancybox-container')) {
+                                        console.log('Fancybox did not open, using simple lightbox...');
+                                        e.preventDefault();
+                                        
+                                        // Collect all gallery images
+                                        const allImages = Array.from(galleryItems).map(item => item.href);
+                                        
+                                        // Open simple lightbox
+                                        if (window.simpleLightbox) {
+                                            window.simpleLightbox.open(allImages, index);
+                                        } else {
+                                            // Ultimate fallback - open in new tab
+                                            window.open(this.href, '_blank');
+                                        }
+                                    }
+                                }, 100);
+                            });
+                            
+                            // Also add direct click handler as immediate fallback
+                            item.addEventListener('click', function(e) {
+                                // Wait a bit to see if Fancybox handles it
+                                setTimeout(() => {
+                                    // If no Fancybox modal is visible, use simple lightbox
+                                    if (!document.querySelector('.fancybox-slide') && 
+                                        !document.querySelector('.fancybox-container')) {
+                                        
+                                        console.log('Using simple lightbox fallback immediately');
+                                        const allImages = Array.from(document.querySelectorAll('[data-fancybox="gallery"]'))
+            }
+        }
+
+        // Load project details when page loads
+        window.addEventListener('DOMContentLoaded', loadProjectDetails);
+        
+        // Additional fallback initialization
+        window.addEventListener('load', () => {
+            // Double-check Fancybox initialization
+            setTimeout(() => {
+                const galleryItems = document.querySelectorAll('[data-fancybox="gallery"]');
+                if (galleryItems.length > 0 && typeof $ !== 'undefined' && $.fancybox) {
+                    console.log('Fallback: Re-initializing jQuery Fancybox for', galleryItems.length, 'items');
+                    
+                    // Force destroy and re-init
+                    try {
+                        $.fancybox.destroy();
+                    } catch (e) {
+                        // Ignore error
+                    }
+                    
+                    // Super simple initialization
+                    $('[data-fancybox="gallery"]').fancybox();
+                    
+                    console.log('Fallback jQuery Fancybox initialization complete');
+                    
+                    // Test one item manually
+                    if (galleryItems.length > 0) {
+                        const firstItem = galleryItems[0];
+                        console.log('Testing first gallery item:', firstItem.href);
+                        
+                        // Add a test button temporarily (for debugging)
+                        const testBtn = document.createElement('button');
+                        testBtn.textContent = 'Test Gallery';
+                        testBtn.style.position = 'fixed';
+                        testBtn.style.top = '100px';
+                        testBtn.style.right = '20px';
+                        testBtn.style.zIndex = '9999';
+                        testBtn.style.background = 'red';
+                        testBtn.style.color = 'white';
+                        testBtn.style.padding = '10px';
+                        testBtn.onclick = () => {
+                            console.log('Manual test button clicked');
+                            $.fancybox.open({
+                                src: firstItem.href,
+                                type: 'image'
+                            });
+                        };
+                        document.body.appendChild(testBtn);
+                        
+                        // Remove test button after 5 seconds
+                        setTimeout(() => {
+                            if (testBtn.parentNode) {
+                                testBtn.remove();
+                            }
+                        }, 5000);
+                    }
+                } else {
+                    console.log('Fallback check - jQuery:', typeof $ !== 'undefined');
+                    console.log('Fallback check - Fancybox:', typeof $.fancybox !== 'undefined');
+                }
+            }, 2000);
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="scripts/simple-lightbox.js"></script>
+    <script src="scripts/components.js"></script>
+</body>
+</html>

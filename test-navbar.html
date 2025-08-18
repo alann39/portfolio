@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body class="bg-[#0A0A0A] text-white min-h-screen">
+    <h1 class="text-center pt-20 text-2xl">Testing Navbar Component</h1>
+    
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+    
+    <div class="pt-20 px-4">
+        <h2 class="text-xl mb-4">Debug Info:</h2>
+        <div id="debug-info" class="bg-white/10 p-4 rounded"></div>
+    </div>
+
+    <script src="scripts/components.js"></script>
+    <script>
+        // Debug script
+        document.addEventListener('DOMContentLoaded', () => {
+            const debugDiv = document.getElementById('debug-info');
+            debugDiv.innerHTML = `
+                <p>Window location: ${window.location.href}</p>
+                <p>Navbar container exists: ${document.getElementById('navbar-container') ? 'Yes' : 'No'}</p>
+                <p>ComponentLoader exists: ${typeof ComponentLoader !== 'undefined' ? 'Yes' : 'No'}</p>
+            `;
+            
+            // Test manual load
+            setTimeout(() => {
+                debugDiv.innerHTML += '<p>Attempting manual load...</p>';
+                if (typeof ComponentLoader !== 'undefined') {
+                    ComponentLoader.loadComponent('navbar-container', 'components/navbar.html')
+                        .then(() => {
+                            debugDiv.innerHTML += '<p>Manual load successful!</p>';
+                        })
+                        .catch(err => {
+                            debugDiv.innerHTML += `<p>Manual load error: ${err.message}</p>`;
+                        });
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

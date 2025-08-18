@@ -5,282 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
-    <style>
-        /* Base Styles */
-        .noise-bg {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.02;
-        }
-
-        /* Project Gallery Grid */
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Gallery Item Styles */
-        .gallery-item {
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.4);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Loading State */
-        .gallery-item.loading::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1;
-        }
-
-        .gallery-item.loading::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-top-color: white;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: spin 1s linear infinite;
-            z-index: 2;
-        }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Fancybox Customization */
-        .fancybox__container {
-            --fancybox-bg: rgba(17, 17, 17, 0.98);
-            --fancybox-color: #fff;
-        }
-
-        .fancybox__content {
-            padding: 0;
-            background: transparent;
-            max-width: 100vw !important;
-            max-height: 100vh !important;
-        }
-
-        .fancybox__image {
-            max-width: 95vw;
-            max-height: 95vh;
-            object-fit: contain;
-            border-radius: 0.5rem;
-        }
-
-        .fancybox__toolbar {
-            background: transparent;
-            --carousel-button-bg: rgba(255, 255, 255, 0.05);
-            --carousel-button-svg-width: 20px;
-            --carousel-button-svg-height: 20px;
-            padding: 1rem;
-        }
-
-        .fancybox__toolbar__items {
-            gap: 12px;
-        }
-
-        .fancybox__toolbar__items button {
-            color: #fff;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fancybox__toolbar__items button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .fancybox__toolbar__items button svg {
-            width: 20px;
-            height: 20px;
-            stroke-width: 2px;
-        }
-
-        .fancybox__slide {
-            padding: 2rem;
-            color: var(--fancybox-color);
-        }
-
-        .fancybox__caption {
-            text-align: center;
-            max-width: 80%;
-            margin: 1rem auto;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.875rem;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 1rem;
-        }
-
-        .fancybox__nav {
-            --carousel-button-bg: rgba(255, 255, 255, 0.05);
-            --carousel-button-svg-width: 24px;
-            --carousel-button-svg-height: 24px;
-        }
-
-        .fancybox__nav .f-button {
-            color: #fff;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            width: 48px;
-            height: 48px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .fancybox__nav .f-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .fancybox__nav .f-button svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 2px;
-        }
-
-        .fancybox__nav .f-button[data-carousel-prev] {
-            left: 1rem;
-        }
-
-        .fancybox__nav .f-button[data-carousel-next] {
-            right: 1rem;
-        }
-
-        @media (max-width: 640px) {
-            .fancybox__nav .f-button {
-                width: 40px;
-                height: 40px;
-            }
-
-            .fancybox__nav .f-button svg {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        .fancybox-zoomIn {
-            animation: fcbZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fancybox-zoomOut {
-            animation: fcbZoomOut 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes fcbZoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fcbZoomOut {
-            from {
-                transform: scale(1);
-                opacity: 1;
-            }
-            to {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-        }
-
-        /* Thumbs Navigation */
-        .fancybox__thumbs {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 8px;
-            border-radius: 12px;
-            margin: 0 auto;
-        }
-
-        .fancybox__thumb {
-            width: 96px;
-            height: 72px;
-            border-radius: 6px;
-            opacity: 0.5;
-            transition: all 0.2s ease;
-        }
-
-        .fancybox__thumb:hover {
-            opacity: 0.8;
-        }
-
-        .is-nav-selected .fancybox__thumb {
-            opacity: 1;
-        }
-        
-        body {
-            font-family: 'General Sans', sans-serif;
-            background: #0A0A0A;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/details.css">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body class="min-h-screen text-white">
-    <!-- Back to Portfolio Button -->
-    <a href="#" onclick="goBack()" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 group">
-        <div class="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            <span class="font-medium">Back</span>
-        </div>
-    </a>
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
 
     <!-- Project Details Section -->
     <section class="pt-32 pb-16 relative">
@@ -326,9 +60,7 @@
                     'Enhanced portfolio with professional video editing work'
                 ],
                 images: [
-                    '',
-                    '',
-                    ''
+                    'assets/projects/ascomfest2024/cover.jpg'
                 ],
                 link: '#'
             },
@@ -380,7 +112,10 @@
                     'Created shareable and relatable content',
                     'Built stronger online presence'
                 ],
-                videoUrl: 'https://drive.google.com/file/d/1Zbc4SjqvgyvVH0juxRxXkyygEC8qxlKf/preview'
+                videoUrl: 'https://drive.google.com/file/d/1Zbc4SjqvgyvVH0juxRxXkyygEC8qxlKf/preview',
+                images: [
+                    'assets/projects/gambreng/cover.jpg'
+                ]
             },
             'project4': {
                 title: 'The Kaleidoscope Project',
@@ -400,7 +135,10 @@
                     'Successfully captured individual stories and collective achievements',
                     'Enhanced portfolio with professional documentary work'
                 ],
-                videoUrl: 'https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview'
+                videoUrl: 'https://drive.google.com/file/d/1PPsktpdKbefZbWH54pKq0VDPJ-v-y6pj/preview',
+                images: [
+                    'assets/projects/kaleidoscope/cover.png'
+                ]
             },
             'project5': {
                 title: 'Company Profile Video of UKM PCC',
@@ -447,11 +185,7 @@
                     'Positive user satisfaction scores',
                     'Successful task automation implementation'
                 ],
-                images: [
-                    'assets/img/projects/project5-main.jpg',
-                    'assets/img/projects/project5-1.jpg',
-                    'assets/img/projects/project5-2.jpg'
-                ]
+                images: []
             },
             'project7': {
                 title: 'Blockchain Marketplace',
@@ -472,11 +206,7 @@
                     'Efficient gas usage',
                     'Growing user base'
                 ],
-                images: [
-                    'assets/img/projects/project6-main.jpg',
-                    'assets/img/projects/project6-1.jpg',
-                    'assets/img/projects/project6-2.jpg'
-                ]
+                images: []
             }
         };
 
@@ -567,7 +297,12 @@
                                             href="${image}"
                                             data-fancybox="gallery"
                                             class="block w-full h-full">
-                                            <img src="${image}" alt="${project.title} - Image ${index + 1}" class="w-full h-full object-cover">
+                                            <img src="${image}" 
+                                                 alt="${project.title} - Image ${index + 1}" 
+                                                 class="w-full h-full object-cover"
+                                                 loading="lazy"
+                                                 onerror="console.error('Failed to load:', this.src); this.parentElement.parentElement.style.display='none';"
+                                                 onload="console.log('Image loaded:', this.src)">
                                         </a>
                                     </div>
                                     ` : ''}
@@ -578,74 +313,115 @@
                     </div>
                 `;
 
-                // Initialize Fancybox for this specific gallery
-                Fancybox.destroy();
-                Fancybox.bind(`[data-fancybox="gallery"]`, {
-                    animated: true,
-                    showClass: "fancybox-zoomIn",
-                    hideClass: "fancybox-zoomOut",
-                    dragToClose: true,
-                    closeButton: false,
+                // Initialize Fancybox for this specific gallery (jQuery version)
+                setTimeout(() => {
+                    console.log('Checking libraries...');
+                    console.log('jQuery available:', typeof $ !== 'undefined');
+                    console.log('Fancybox available:', typeof $ !== 'undefined' && typeof $.fancybox !== 'undefined');
                     
-                    Navigation: {
-                        arrows: true,
-                        prevTpl: '<button class="f-button" title="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>',
-                        nextTpl: '<button class="f-button" title="Next"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>'
-                    },
-                    Image: {
-                        zoom: true,
-                        fit: "contain",
-                        click: "toggleZoom",
-                        wheel: "zoom",
-                        zoomOpacity: "auto",
-                        initialSize: "fit",
-                        preload: true,
-                        animated: true,
-                        breakpoints: {
-                            "(max-width: 768px)": {
-                                click: "close"
+                    if (typeof $ !== 'undefined' && $.fancybox) {
+                        // Destroy any existing instances
+                        try {
+                            $.fancybox.destroy();
+                        } catch (e) {
+                            console.log('No existing Fancybox instances to destroy');
+                        }
+                        
+                        // Initialize jQuery Fancybox - SIMPLIFIED
+                        $('[data-fancybox="gallery"]').fancybox({
+                            loop: true,
+                            animationEffect: "fade",
+                            
+                            // Basic event handlers
+                            beforeShow: function(instance, current) {
+                                console.log('Opening:', current.src);
                             }
-                        }
-                    },
-                    l10n: {
-                        CLOSE: "Tutup",
-                        NEXT: "Selanjutnya",
-                        PREV: "Sebelumnya",
-                        MODAL: "Galeri Gambar",
-                        TOGGLE_SLIDESHOW: "Putar Otomatis",
-                        TOGGLE_FULLSCREEN: "Layar Penuh",
-                        TOGGLE_THUMBS: "Thumbnail",
+                        });
+                        
+                        console.log('jQuery Fancybox initialized for gallery');
+                        
+                        // Immediate gallery initialization
+                        const initializeGalleryNow = () => {
+                            const galleryItems = document.querySelectorAll('[data-fancybox="gallery"]');
+                            console.log('Found gallery items:', galleryItems.length);
+                            
+                            if (galleryItems.length > 0) {
+                                // Add direct click handlers that work immediately
+                                galleryItems.forEach((item, index) => {
+                                    console.log(`Setting up gallery item ${index}:`, item.href);
+                                    
+                                    // Clear any existing handlers
+                                    item.onclick = null;
+                                    
+                                    // Add primary click handler (immediate response)
+                                    item.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log('🔥 Gallery click detected on:', this.href);
+                                        
+                                        // Try Fancybox first
+                                        if (typeof $ !== 'undefined' && $.fancybox) {
+                                            console.log('✅ Opening with Fancybox...');
+                                            try {
+                                                $.fancybox.open({
+                                                    src: this.href,
+                                                    type: 'image',
+                                                    opts: {
+                                                        loop: true,
+                                                        buttons: ['zoom', 'slideShow', 'fullScreen', 'thumbs', 'close']
+                                                    }
+                                                });
+                                                return;
+                                            } catch (err) {
+                                                console.log('❌ Fancybox failed:', err);
+                                            }
+                                        }
+                                        
+                                        // Fallback to simple lightbox
+                                        if (window.simpleLightbox) {
+                                            console.log('🔄 Opening with simple lightbox...');
+                                            const allImages = Array.from(galleryItems).map(item => item.href);
+                                            window.simpleLightbox.open(allImages, index);
+                                        } else {
+                                            console.log('🌐 Opening in new tab...');
+                                            window.open(this.href, '_blank');
+                                        }
+                                    }, true);
+                                });
+                                
+                                // Try to initialize Fancybox too (optional)
+                                if (typeof $ !== 'undefined' && $.fancybox) {
+                                    try {
+                                        $('[data-fancybox="gallery"]').fancybox({
+                                            loop: true,
+                                            buttons: ['zoom', 'slideShow', 'fullScreen', 'thumbs', 'close']
+                                        });
+                                        console.log('Fancybox also initialized');
+                                    } catch (err) {
+                                        console.log('Fancybox init failed, manual handlers still work:', err);
+                                    }
+                                }
+                            }
+                        };
+                        
+                        // Initialize gallery immediately
+                        initializeGalleryNow();
+                        
+                    } else {
+                        console.error('jQuery or Fancybox library not loaded');
+                        console.log('jQuery available:', typeof $ !== 'undefined');
+                        console.log('Fancybox available:', typeof $.fancybox !== 'undefined');
                     }
-                });
-
-                // Add click event listeners to gallery items
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    item.addEventListener('click', (e) => {
-                        if (item.classList.contains('error')) {
-                            e.preventDefault();
-                            alert('Sorry, this image failed to load');
-                        }
-                    });
-                });
+                }, 500);
             }
         }
 
         // Load project details when page loads
         window.addEventListener('DOMContentLoaded', loadProjectDetails);
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <script>
-        // Back button functionality
-        function goBack() {
-            const referrer = document.referrer;
-            if (referrer && referrer.includes('index.html')) {
-                const urlParams = new URLSearchParams(window.location.search);
-                const section = urlParams.get('from') || 'projects';
-                window.location.href = `index.html#${section}`;
-            } else {
-                window.history.back();
-            }
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="scripts/simple-lightbox.js"></script>
+    <script src="scripts/components.js"></script>
 </body>
 </html>

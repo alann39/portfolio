@@ -1,0 +1,284 @@
+/* Project Gallery Styles */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Gallery Item Styles */
+.gallery-item {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Video styles */
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* Gallery overlay */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+/* Gallery item labels */
+.gallery-item .item-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.gallery-item:hover .item-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project navigation */
+.project-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.project-nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Loading animation */
+.gallery-item.loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.gallery-item.loading::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s linear infinite;
+    z-index: 2;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s linear infinite;
+    z-index: 2;
+    opacity: 0;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Gallery Video Embed */
+.gallery-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 1rem;
+}
+
+/* Fancybox 3 Customization */
+.fancybox-bg {
+    background: rgba(17, 17, 17, 0.98) !important;
+}
+
+.fancybox-content {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.fancybox-image {
+    border-radius: 0.5rem;
+}
+
+.fancybox-toolbar {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.fancybox-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #fff !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px !important;
+    width: 40px !important;
+    height: 40px !important;
+    transition: all 0.2s ease !important;
+}
+
+.fancybox-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+.fancybox-button svg {
+    width: 20px !important;
+    height: 20px !important;
+    stroke-width: 2px !important;
+}
+
+.fancybox-navigation .fancybox-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.fancybox-navigation .fancybox-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05) !important;
+}
+
+@media (max-width: 640px) {
+    .fancybox-navigation .fancybox-button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+.fancybox-slide {
+    padding: 2rem !important;
+}
+
+.fancybox-caption {
+    text-align: center !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.875rem !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 1rem !important;
+    margin: 1rem auto !important;
+    max-width: 80% !important;
+}
+
+/* jQuery Fancybox specific overrides */
+.fancybox-container {
+    z-index: 9999 !important;
+}
+
+.fancybox-stage {
+    z-index: 9998 !important;
+}
+
+/* Animation improvements */
+.fancybox-slide--image .fancybox-content {
+    transition: all 0.3s ease !important;
+}
+
+/* Zoom cursor */
+.fancybox-can-zoomIn .fancybox-content {
+    cursor: zoom-in !important;
+}
+
+.fancybox-can-zoomOut .fancybox-content {
+    cursor: zoom-out !important;
+}
+
+.fancybox-is-zoomable.fancybox-can-swipe .fancybox-content {
+    cursor: grab !important;
+}
+
+.fancybox-is-zoomable.fancybox-can-swipe .fancybox-content:active {
+    cursor: grabbing !important;
+}
+
+/* Responsive gallery */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 4/3;
+    }
+}
